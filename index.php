@@ -49,20 +49,20 @@
                                              <label>Password</label>
                                           </div>
                                        </div>
-                                       <div class="col-lg-6">
-                                          <div class="custom-control custom-checkbox mb-3">
-                                             <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                             <label class="custom-control-label control-label-1 text-white" for="customCheck1">Remember Me</label>
-                                          </div>
-                                       </div>
-                                       <div class="col-lg-6">
-                                          <a href="auth-recoverpw.html" class="text-white float-right">Forgot Password?</a>
-                                       </div>
+<!--                                       <div class="col-lg-6">-->
+<!--                                          <div class="custom-control custom-checkbox mb-3">-->
+<!--                                             <input type="checkbox" class="custom-control-input" id="customCheck1">-->
+<!--                                             <label class="custom-control-label control-label-1 text-white" for="customCheck1">Remember Me</label>-->
+<!--                                          </div>-->
+<!--                                       </div>-->
+<!--                                       <div class="col-lg-6">-->
+<!--                                          <a href="auth-recoverpw.html" class="text-white float-right">Forgot Password?</a>-->
+<!--                                       </div>-->
                                     </div>
                                     <button type="submit" class="btn btn-white">Sign In</button>
-                                    <p class="mt-3">
-                                       Create an Account <a href="auth-sign-up.html" class="text-white text-underline">Sign Up</a>
-                                    </p>
+<!--                                    <p class="mt-3">-->
+<!--                                       Create an Account <a href="auth-sign-up.html" class="text-white text-underline">Sign Up</a>-->
+<!--                                    </p>-->
                                  </form>
                               </div>
                            </div>
