@@ -10,95 +10,55 @@ include_once('Common/menu.php');
 <div class="content-page">
     <div class="container-fluid">
 
-        
-            <div class="card">
-                <div class="card-header d-flex justify-content-between">
-                    <div class="header-title">
-                        <h4 class="card-title">New User Information</h4>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="new-user-info">
-                        <form>
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="fname">First Name:</label>
-                                    <input type="text" class="form-control" id="fname" placeholder="First Name">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="lname">Last Name:</label>
-                                    <input type="text" class="form-control" id="lname" placeholder="Last Name">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="add1">Street Address 1:</label>
-                                    <input type="text" class="form-control" id="add1" placeholder="Street Address 1">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="add2">Street Address 2:</label>
-                                    <input type="text" class="form-control" id="add2" placeholder="Street Address 2">
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <label for="cname">Company Name:</label>
-                                    <input type="text" class="form-control" id="cname" placeholder="Company Name">
-                                </div>
-                                <div class="form-group col-sm-12">
-                                    <label>Country:</label>
-                                    <select name="type" class="selectpicker form-control" data-style="py-0">
-                                        <option>Select Country</option>
-                                        <option>Caneda</option>
-                                        <option>Noida</option>
-                                        <option >USA</option>
-                                        <option>India</option>
-                                        <option>Africa</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="mobno">Mobile Number:</label>
-                                    <input type="text" class="form-control" id="mobno" placeholder="Mobile Number">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="altconno">Alternate Contact:</label>
-                                    <input type="text" class="form-control" id="altconno" placeholder="Alternate Contact">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="email">Email:</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Email">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="pno">Pin Code:</label>
-                                    <input type="text" class="form-control" id="pno" placeholder="Pin Code">
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <label for="city">Town/City:</label>
-                                    <input type="text" class="form-control" id="city" placeholder="Town/City">
-                                </div>
-                            </div>
-                            <hr>
-                            <h5 class="mb-3">Security</h5>
-                            <div class="row">
-                                <div class="form-group col-md-12">
-                                    <label for="uname">User Name:</label>
-                                    <input type="text" class="form-control" id="uname" placeholder="User Name">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="pass">Password:</label>
-                                    <input type="password" class="form-control" id="pass" placeholder="Password">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="rpass">Repeat Password:</label>
-                                    <input type="password" class="form-control" id="rpass" placeholder="Repeat Password ">
-                                </div>
-                            </div>
-                            <div class="checkbox">
-                                <label><input class="mr-2" type="checkbox">Enable Two-Factor-Authentication</label>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Add New User</button>
-                        </form>
-                    </div>
+
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                <div class="header-title">
+                    <h4 class="card-title">New User Information</h4>
                 </div>
             </div>
+            <div class="card-body">
+                <div class="new-user-info">
+                    <form>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="user_name">Name:</label>
+                                <input type="text" class="form-control" id="user_name" placeholder="Enter Name">
+                            </div>
 
+                            <div class="form-group col-md-6">
+                                <label for="mobno">Mobile Number:</label>
+                                <input type="text" class="form-control" id="mobile_no" placeholder="Enter Mobile Number"
+                                       maxlength="10">
+                            </div>
+
+                        </div>
+                        <hr>
+                        <h5 class="mb-3">Security</h5>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="uname">E mail:</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter E mail">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="pass">Password:</label>
+                                <input type="password" class="form-control" id="pass" placeholder="Enter Password">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="rpass">Repeat Password:</label>
+                                <input type="password" class="form-control" id="rpass" placeholder="Repeat Password ">
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-primary pull-right" onclick="save();">Add New User</button>
+                        <a href="dashboard.php">
+                            <button type="button" class="btn btn-danger pull-right">Close</button>
+                        </a>
+                    </form>
+                </div>
+            </div>
         </div>
+
     </div>
 </div>
 
@@ -107,5 +67,63 @@ include_once('Common/menu.php');
 <?php
 include_once('Common/footer.php');
 ?>
+<script type="text/javascript">
+    function save() {
+
+
+        if (document.getElementById('user_name').value == "") {
+            myNotification({
+                message: 'Name is required.'
+            });
+        } else if (document.getElementById('mobile_no').value == "") {
+            myNotification({
+                message: 'Mobile No is required.'
+            });
+        } else if (document.getElementById('email').value == "") {
+            myNotification({
+                message: 'E mail is required.'
+            });
+        }
+        else if (document.getElementById('pass').value == "") {
+            myNotification({
+                message: 'Password is required.'
+            });
+        } else if (document.getElementById('pass').value.length < 5) {
+            myNotification({
+                message: 'Password contains at least 5 characters.'
+            });
+        }
+        else if (document.getElementById('rpass').value == "") {
+            myNotification({
+                message: 'Repeat Password is required.'
+            });
+        } else if (document.getElementById('pass').value != document.getElementById('rpass').value) {
+            myNotification({
+                message: 'Password and Repeat Password should be same.'
+            });
+        } else {
+            var url = '../backend/UserManager.php?RequstType=SaveNewUser';
+            url += '&user_name=' + encodeURIComponent(document.getElementById('user_name').value);
+            url += '&mobile_no=' + encodeURIComponent(document.getElementById('mobile_no').value);
+            url += '&email=' + encodeURIComponent(document.getElementById('email').value);
+            url += '&password=' + encodeURIComponent(document.getElementById('pass').value);
+            var htmlobj = $.ajax({url: url, async: false});
+            if (htmlobj.responseXML.getElementsByTagName("Result")[0].childNodes[0].nodeValue == "TRUE") {
+                Swal.fire({
+                    title: "Success",
+                    text: htmlobj.responseXML.getElementsByTagName("Message")[0].childNodes[0].nodeValue,
+                    icon: "success"
+                });
+                location.reload();
+            } else {
+                Swal.fire({
+                    title: "Warning",
+                    text: htmlobj.responseXML.getElementsByTagName("Message")[0].childNodes[0].nodeValue,
+                    icon: "warning"
+                });
+            }
+        }
+    }
+</script>
 
 

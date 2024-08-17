@@ -25,6 +25,9 @@ include_once('../backend/DBManager.php');
     <link rel="stylesheet" href="../assets/vendor/tui-calendar/tui-calendar/dist/tui-calendar.css">
     <link rel="stylesheet" href="../assets/vendor/tui-calendar/tui-date-picker/dist/tui-date-picker.css">
     <link rel="stylesheet" href="../assets/vendor/tui-calendar/tui-time-picker/dist/tui-time-picker.css">
+    <link rel="stylesheet" href="../assets/dist/notifications.css">
+    <script src="../assets/js/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/sweetalert2.min.css">
 </head>
 <body class=" color-light ">
 <!-- loader Start -->
