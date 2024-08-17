@@ -49,7 +49,7 @@
                                             <i class="las la-minus"></i><span>User Add</span>
                                         </a>
                                     </li>
-                                    <li class="">
+                                    <li <?php if ($is_user_list == 1) { ?>      class="active" <?php } ?>>
                                         <a href="../app/user_list.php">
                                             <i class="las la-minus"></i><span>User List</span>
                                         </a>

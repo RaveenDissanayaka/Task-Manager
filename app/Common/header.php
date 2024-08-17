@@ -41,5 +41,6 @@ include_once('../backend/DBManager.php');
 $is_dashboard = 0;
 $is_user = 0;
 $is_user_add = 0;
+$is_user_list = 0;
 
 ?>
