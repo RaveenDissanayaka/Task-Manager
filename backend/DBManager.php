@@ -6,7 +6,7 @@ define('DB_PASS', ''); // db user password
 define('DB_NAME', 'task_manager'); // db name
 // Establish database connection.
 try {
-    $dbh = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
+    $db = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
 } catch (PDOException $e) {
     exit("Error: " . $e->getMessage());
 }
