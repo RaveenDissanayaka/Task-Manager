@@ -39,6 +39,22 @@
 <script src="../assets/dist/notifications.js"></script>
 <script type="text/javascript">
 
+    function logout(){
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Do you really want to logout?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, logout!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+            document.location = '../logout.php';
+        }
+    });
+    }
+
     const myNotification = window.createNotification({
         closeOnClick: true,
         displayCloseButton: false,
