@@ -49,3 +49,60 @@ if (strcmp($RequstType, "SaveNewUser") == 0) {
     $ResponseXML .= "</Validate>";
     echo $ResponseXML;
 }
+if (strcmp($RequstType, "DeleteUser") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $user_id = $_GET["user_id"];
+    $user_status = '0';
+
+    $sql = "UPDATE users SET `user_status`= :user_status WHERE `user_id` = :user_id";
+    $query = $db->prepare($sql);
+    $query -> bindParam(':user_status', $user_status, PDO::PARAM_STR);
+    $query -> bindParam(':user_id' , $user_id , PDO::PARAM_INT);
+    $query -> execute();
+    if($query -> rowCount() > 0)
+    {
+        $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[User has been deleted]]></Message>\n";
+    }
+    else
+    {
+        $ResponseXML .= "<Result><![CDATA[False]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[Something went wrong.Please try again]]></Message>\n";
+    }
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
+}if (strcmp($RequstType, "ActiveUser") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $user_id = $_GET["user_id"];
+    $user_status = '1';
+
+    $sql = "UPDATE users SET `user_status`= :user_status WHERE `user_id` = :user_id";
+    $query = $db->prepare($sql);
+    $query -> bindParam(':user_status', $user_status, PDO::PARAM_STR);
+    $query -> bindParam(':user_id' , $user_id , PDO::PARAM_INT);
+    $query -> execute();
+    if($query -> rowCount() > 0)
+    {
+        $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[User has been activated]]></Message>\n";
+    }
+    else
+    {
+        $ResponseXML .= "<Result><![CDATA[False]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[Something went wrong.Please try again]]></Message>\n";
+    }
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
+}
