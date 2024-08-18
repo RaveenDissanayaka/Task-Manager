@@ -4,6 +4,29 @@ include "DBManager.php";
 
 $RequstType = $_GET["RequstType"];
 
+if (strcmp($RequstType, "CheckUserEmail") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $email = $_GET["email"];
+
+    $sql = "SELECT * FROM users WHERE email = :email";
+    $query = $db->prepare($sql);
+    $query->bindParam(':email', $email, PDO::PARAM_STR);
+    $query->execute();
+    $results = $query->fetchAll(PDO::FETCH_OBJ);
+    if ($query->rowCount() > 0) {
+        $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
+    } else {
+        $ResponseXML .= "<Result><![CDATA[FALSE]]></Result>\n";
+    }
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
+}
 if (strcmp($RequstType, "SaveNewUser") == 0) {
     header('Content-Type: text/xml');
     echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
@@ -19,7 +42,7 @@ if (strcmp($RequstType, "SaveNewUser") == 0) {
     $user_type = 'A';
     $user_status = '1';
     $created_by = $_SESSION["userid"];
-    $created_date =date("Y-m-d h:i:s");
+    $created_date = date("Y-m-d h:i:s");
 
 
     // Query for Insertion
@@ -61,23 +84,21 @@ if (strcmp($RequstType, "DeleteUser") == 0) {
 
     $sql = "UPDATE users SET `user_status`= :user_status WHERE `user_id` = :user_id";
     $query = $db->prepare($sql);
-    $query -> bindParam(':user_status', $user_status, PDO::PARAM_STR);
-    $query -> bindParam(':user_id' , $user_id , PDO::PARAM_INT);
-    $query -> execute();
-    if($query -> rowCount() > 0)
-    {
+    $query->bindParam(':user_status', $user_status, PDO::PARAM_STR);
+    $query->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $query->execute();
+    if ($query->rowCount() > 0) {
         $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
         $ResponseXML .= "<Message><![CDATA[User has been deleted]]></Message>\n";
-    }
-    else
-    {
+    } else {
         $ResponseXML .= "<Result><![CDATA[False]]></Result>\n";
         $ResponseXML .= "<Message><![CDATA[Something went wrong.Please try again]]></Message>\n";
     }
 
     $ResponseXML .= "</Validate>";
     echo $ResponseXML;
-}if (strcmp($RequstType, "ActiveUser") == 0) {
+}
+if (strcmp($RequstType, "ActiveUser") == 0) {
     header('Content-Type: text/xml');
     echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 
@@ -89,16 +110,13 @@ if (strcmp($RequstType, "DeleteUser") == 0) {
 
     $sql = "UPDATE users SET `user_status`= :user_status WHERE `user_id` = :user_id";
     $query = $db->prepare($sql);
-    $query -> bindParam(':user_status', $user_status, PDO::PARAM_STR);
-    $query -> bindParam(':user_id' , $user_id , PDO::PARAM_INT);
-    $query -> execute();
-    if($query -> rowCount() > 0)
-    {
+    $query->bindParam(':user_status', $user_status, PDO::PARAM_STR);
+    $query->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $query->execute();
+    if ($query->rowCount() > 0) {
         $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
         $ResponseXML .= "<Message><![CDATA[User has been activated]]></Message>\n";
-    }
-    else
-    {
+    } else {
         $ResponseXML .= "<Result><![CDATA[False]]></Result>\n";
         $ResponseXML .= "<Message><![CDATA[Something went wrong.Please try again]]></Message>\n";
     }

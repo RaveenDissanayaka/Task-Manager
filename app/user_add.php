@@ -102,6 +102,16 @@ include_once('Common/footer.php');
                 message: 'Password and Repeat Password should be same.'
             });
         } else {
+
+            var urlCUser = '../backend/UserManager.php?RequstType=CheckUserEmail';
+            urlCUser += '&email=' + encodeURIComponent(document.getElementById('email').value);
+            var htmlobjCUser = $.ajax({url: urlCUser, async: false});
+            if (htmlobjCUser.responseXML.getElementsByTagName("Result")[0].childNodes[0].nodeValue == "TRUE") {
+                myNotification({
+                    message: 'E-mai already exist.'
+                });
+            }else{
+
             var url = '../backend/UserManager.php?RequstType=SaveNewUser';
             url += '&user_name=' + encodeURIComponent(document.getElementById('user_name').value);
             url += '&mobile_no=' + encodeURIComponent(document.getElementById('mobile_no').value);
@@ -114,7 +124,10 @@ include_once('Common/footer.php');
                     text: htmlobj.responseXML.getElementsByTagName("Message")[0].childNodes[0].nodeValue,
                     icon: "success"
                 });
-                location.reload();
+                setTimeout(function(){
+                    location.reload();
+                }, 2000);
+
             } else {
                 Swal.fire({
                     title: "Warning",
@@ -122,6 +135,7 @@ include_once('Common/footer.php');
                     icon: "warning"
                 });
             }
+        }
         }
     }
 </script>

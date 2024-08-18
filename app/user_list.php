@@ -117,7 +117,9 @@ include_once('Common/footer.php');
                     text: htmlobj.responseXML.getElementsByTagName("Message")[0].childNodes[0].nodeValue,
                     icon: "success"
                 });
-                location.reload();
+                setTimeout(function(){
+                    location.reload();
+                }, 2000);
             } else {
                 Swal.fire({
                     title: "Warning",
@@ -149,7 +151,9 @@ include_once('Common/footer.php');
                     text: htmlobj.responseXML.getElementsByTagName("Message")[0].childNodes[0].nodeValue,
                     icon: "success"
                 });
-                location.reload();
+                setTimeout(function(){
+                    location.reload();
+                }, 2000);
             } else {
                 Swal.fire({
                     title: "Warning",

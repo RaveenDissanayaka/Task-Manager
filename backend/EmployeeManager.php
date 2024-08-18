@@ -4,6 +4,29 @@ include "DBManager.php";
 
 $RequstType = $_GET["RequstType"];
 
+if (strcmp($RequstType, "CheckEmployeeEmail") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $email = $_GET["email"];
+
+    $sql = "SELECT * FROM users WHERE email = :email";
+    $query = $db->prepare($sql);
+    $query->bindParam(':email', $email, PDO::PARAM_STR);
+    $query->execute();
+    $results = $query->fetchAll(PDO::FETCH_OBJ);
+    if ($query->rowCount() > 0) {
+        $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
+    } else {
+        $ResponseXML .= "<Result><![CDATA[FALSE]]></Result>\n";
+    }
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
+}
 if (strcmp($RequstType, "SaveNewEmployee") == 0) {
     header('Content-Type: text/xml');
     echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
