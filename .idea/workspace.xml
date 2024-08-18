@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="128d5c0d-8b23-46c3-9c21-b38e6f3bec8d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/employee_add.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/employee_list.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/EmployeeManager.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Common/header.php" afterPath="$PROJECT_DIR$/app/Common/header.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Common/menu.php" afterPath="$PROJECT_DIR$/app/Common/menu.php" />
     </list>
     <ignored path="Task Manager.iws" />
@@ -29,13 +24,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="menu.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="menu.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Common/menu.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="35.307693">
-              <caret line="78" column="69" selection-start-line="78" selection-start-column="69" selection-end-line="78" selection-end-column="69" />
+            <state vertical-scroll-proportion="-2.9066427">
+              <caret line="20" column="103" selection-start-line="20" selection-start-column="103" selection-end-line="20" selection-end-column="103" />
               <folding>
-                <marker date="1723951346776" expanded="true" signature="18780:18828" placeholder="SELECT name users" />
+                <marker date="1723951515932" expanded="true" signature="19242:19290" placeholder="SELECT name users" />
               </folding>
             </state>
           </provider>
@@ -75,10 +70,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="employee_list.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="employee_list.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/employee_list.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6409336">
+            <state vertical-scroll-proportion="-13.730769">
               <caret line="141" column="79" selection-start-line="141" selection-start-column="79" selection-end-line="141" selection-end-column="79" />
               <folding>
                 <marker date="1723951441689" expanded="true" signature="1107:1188" placeholder="SELECT user_... users" />
@@ -110,8 +105,8 @@
         <option value="$PROJECT_DIR$/app/Common/header.php" />
         <option value="$PROJECT_DIR$/app/employee_add.php" />
         <option value="$PROJECT_DIR$/backend/EmployeeManager.php" />
-        <option value="$PROJECT_DIR$/app/Common/menu.php" />
         <option value="$PROJECT_DIR$/app/employee_list.php" />
+        <option value="$PROJECT_DIR$/app/Common/menu.php" />
       </list>
     </option>
   </component>
@@ -327,7 +322,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="277" column="46" selection-start-line="269" selection-start-column="43" selection-end-line="277" selection-end-column="46" />
           <folding>
-            <marker date="1723951346776" expanded="true" signature="18780:18828" placeholder="SELECT name users" />
+            <marker date="1723951515932" expanded="true" signature="19242:19290" placeholder="SELECT name users" />
           </folding>
         </state>
       </provider>
@@ -391,7 +386,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="52" column="69" selection-start-line="52" selection-start-column="69" selection-end-line="52" selection-end-column="69" />
           <folding>
-            <marker date="1723951346776" expanded="true" signature="18780:18828" placeholder="SELECT name users" />
+            <marker date="1723951515932" expanded="true" signature="19242:19290" placeholder="SELECT name users" />
           </folding>
         </state>
       </provider>
@@ -580,16 +575,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Common/menu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="35.307693">
-          <caret line="78" column="69" selection-start-line="78" selection-start-column="69" selection-end-line="78" selection-end-column="69" />
-          <folding>
-            <marker date="1723951346776" expanded="true" signature="18780:18828" placeholder="SELECT name users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/EmployeeManager.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.0">
@@ -604,10 +589,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/employee_list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6409336">
+        <state vertical-scroll-proportion="-13.730769">
           <caret line="141" column="79" selection-start-line="141" selection-start-column="79" selection-end-line="141" selection-end-column="79" />
           <folding>
             <marker date="1723951441689" expanded="true" signature="1107:1188" placeholder="SELECT user_... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Common/menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.9066427">
+          <caret line="20" column="103" selection-start-line="20" selection-start-column="103" selection-end-line="20" selection-end-column="103" />
+          <folding>
+            <marker date="1723951515932" expanded="true" signature="19242:19290" placeholder="SELECT name users" />
           </folding>
         </state>
       </provider>

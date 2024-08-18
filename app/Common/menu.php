@@ -82,72 +82,72 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="">
-                                <a href="#task" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                                    <svg class="svg-icon" width="25" height="25" xmlns="http://www.w3.org/2000/svg"
-                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                         stroke-linecap="round" stroke-linejoin="round">
-                                        <path
-                                            d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
-                                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
-                                    </svg>
-                                    <span class="ml-4">Task</span>
-                                    <i class="las la-angle-right iq-arrow-right arrow-active"></i>
-                                    <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
-                                </a>
-                                <ul id="task" class="iq-submenu collapse" data-parent="#otherpage">
-
-                                    <li class="">
-                                        <a href="../app/user-add.html">
-                                            <i class="las la-minus"></i><span>Task Add</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="../app/user-list.html">
-                                            <i class="las la-minus"></i><span>Task List</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="../app/user-list.html">
-                                            <i class="las la-minus"></i><span>Task Assign</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="">
-                                <a href="#activity" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                                    <svg class="svg-icon" id="p-dash14" width="20" height="20"
-                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                         stroke-linejoin="round">
-                                        <rect x="3" y="3" width="7" height="7"></rect>
-                                        <rect x="14" y="3" width="7" height="7"></rect>
-                                        <rect x="14" y="14" width="7" height="7"></rect>
-                                        <rect x="3" y="14" width="7" height="7"></rect>
-                                    </svg>
-                                    <span class="ml-4">Activity</span>
-                                    <i class="las la-angle-right iq-arrow-right arrow-active"></i>
-                                    <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
-                                </a>
-                                <ul id="activity" class="iq-submenu collapse" data-parent="#otherpage">
-
-                                    <li class="">
-                                        <a href="../app/user-add.html">
-                                            <i class="las la-minus"></i><span>Activity Add</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="../app/user-list.html">
-                                            <i class="las la-minus"></i><span>Activity List</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="../app/user-list.html">
-                                            <i class="las la-minus"></i><span>Activity Allocate</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+<!--                            <li class="">-->
+<!--                                <a href="#task" class="collapsed" data-toggle="collapse" aria-expanded="false">-->
+<!--                                    <svg class="svg-icon" width="25" height="25" xmlns="http://www.w3.org/2000/svg"-->
+<!--                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"-->
+<!--                                         stroke-linecap="round" stroke-linejoin="round">-->
+<!--                                        <path-->
+<!--                                            d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>-->
+<!--                                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>-->
+<!--                                    </svg>-->
+<!--                                    <span class="ml-4">Task</span>-->
+<!--                                    <i class="las la-angle-right iq-arrow-right arrow-active"></i>-->
+<!--                                    <i class="las la-angle-down iq-arrow-right arrow-hover"></i>-->
+<!--                                </a>-->
+<!--                                <ul id="task" class="iq-submenu collapse" data-parent="#otherpage">-->
+<!---->
+<!--                                    <li class="">-->
+<!--                                        <a href="../app/user-add.html">-->
+<!--                                            <i class="las la-minus"></i><span>Task Add</span>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+<!--                                    <li class="">-->
+<!--                                        <a href="../app/user-list.html">-->
+<!--                                            <i class="las la-minus"></i><span>Task List</span>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+<!--                                    <li class="">-->
+<!--                                        <a href="../app/user-list.html">-->
+<!--                                            <i class="las la-minus"></i><span>Task Assign</span>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </li>-->
+<!--                            <li class="">-->
+<!--                                <a href="#activity" class="collapsed" data-toggle="collapse" aria-expanded="false">-->
+<!--                                    <svg class="svg-icon" id="p-dash14" width="20" height="20"-->
+<!--                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"-->
+<!--                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"-->
+<!--                                         stroke-linejoin="round">-->
+<!--                                        <rect x="3" y="3" width="7" height="7"></rect>-->
+<!--                                        <rect x="14" y="3" width="7" height="7"></rect>-->
+<!--                                        <rect x="14" y="14" width="7" height="7"></rect>-->
+<!--                                        <rect x="3" y="14" width="7" height="7"></rect>-->
+<!--                                    </svg>-->
+<!--                                    <span class="ml-4">Activity</span>-->
+<!--                                    <i class="las la-angle-right iq-arrow-right arrow-active"></i>-->
+<!--                                    <i class="las la-angle-down iq-arrow-right arrow-hover"></i>-->
+<!--                                </a>-->
+<!--                                <ul id="activity" class="iq-submenu collapse" data-parent="#otherpage">-->
+<!---->
+<!--                                    <li class="">-->
+<!--                                        <a href="../app/user-add.html">-->
+<!--                                            <i class="las la-minus"></i><span>Activity Add</span>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+<!--                                    <li class="">-->
+<!--                                        <a href="../app/user-list.html">-->
+<!--                                            <i class="las la-minus"></i><span>Activity List</span>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+<!--                                    <li class="">-->
+<!--                                        <a href="../app/user-list.html">-->
+<!--                                            <i class="las la-minus"></i><span>Activity Allocate</span>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </li>-->
 
                         </ul>
                     </li>
