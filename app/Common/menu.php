@@ -56,7 +56,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="">
+                            <li <?php if ($is_employee == 1) { ?>      class="active" <?php } ?>>
                                 <a href="#employee" class="collapsed" data-toggle="collapse" aria-expanded="false">
                                     <svg class="svg-icon" width="25" height="25" xmlns="http://www.w3.org/2000/svg"
                                          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -70,13 +70,13 @@
                                 </a>
                                 <ul id="employee" class="iq-submenu collapse" data-parent="#otherpage">
 
-                                    <li class="">
-                                        <a href="../app/user-add.html">
+                                    <li <?php if ($is_employee_add == 1) { ?>      class="active" <?php } ?>>
+                                        <a href="../app/employee_add.php">
                                             <i class="las la-minus"></i><span>Employee Add</span>
                                         </a>
                                     </li>
-                                    <li class="">
-                                        <a href="../app/user-list.html">
+                                    <li <?php if ($is_employee_list == 1) { ?>      class="active" <?php } ?>>
+                                        <a href="../app/employee_list.php">
                                             <i class="las la-minus"></i><span>Employee List</span>
                                         </a>
                                     </li>
