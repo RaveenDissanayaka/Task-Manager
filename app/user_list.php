@@ -63,6 +63,11 @@ include_once('Common/menu.php');
                                                data-original-title="Delete" href="#"
                                                onclick="deleteRow(<?php echo $row['user_id']; ?>);"><i
                                                     class="ri-delete-bin-line mr-0"></i></a>
+                                            <a class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top"
+                                               title=""
+                                               data-original-title="Reset Password" href="#"
+                                               onclick="resetRow(<?php echo $row['user_id']; ?>);"><i
+                                                    class="ri-key-fill mr-0"></i></a>
                                         <?php } else { ?>
                                             <a class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top"
                                                title=""
@@ -95,6 +100,24 @@ include_once('Common/footer.php');
     }
     function editRow(id) {
 
+    }
+    function resetRow(id) {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You want to reset user password?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, reset it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+            $('#passwordResetModal').modal('show');
+            document.getElementById('password').value = "";
+            document.getElementById('re_password').value = "";
+            document.getElementById('user_id').value = id;
+        }
+    });
     }
     function deleteRow(id) {
         Swal.fire({
@@ -164,6 +187,75 @@ include_once('Common/footer.php');
         }
     });
     }
+    function resetPassword()
+    {
+        if (document.getElementById('password').value == "") {
+            myNotification({
+                message: 'Password is required.'
+            });
+        }  else if (document.getElementById('password').value.length < 5) {
+            myNotification({
+                message: 'Password contains at least 5 characters.'
+            });
+        }else if (document.getElementById('re_password').value == "") {
+            myNotification({
+                message: 'Re type password is required.'
+            });
+        }else if (document.getElementById('password').value != document.getElementById('re_password').value) {
+            myNotification({
+                message: 'Password and Re type password should be same.'
+            });
+        }else{
+            var url = '../backend/UserManager.php?RequstType=ResetUserPassword';
+            url += '&user_id=' + encodeURIComponent(document.getElementById('user_id').value);
+            url += '&new_pass=' + encodeURIComponent(document.getElementById('password').value);
+            var htmlobj = $.ajax({url: url, async: false});
+
+            if (htmlobj.responseXML.getElementsByTagName("Result")[0].childNodes[0].nodeValue == "TRUE") {
+                $('#passwordResetModal').modal('hide');
+                Swal.fire({
+                    title: "Success",
+                    text: htmlobj.responseXML.getElementsByTagName("Message")[0].childNodes[0].nodeValue,
+                    icon: "success"
+                });
+
+            } else {
+                Swal.fire({
+                    title: "Warning",
+                    text: htmlobj.responseXML.getElementsByTagName("Message")[0].childNodes[0].nodeValue,
+                    icon: "warning"
+                });
+            }
+        }
+    }
 </script>
 
 
+<!-- Password Reset Modal -->
+<div class="modal fade" id="passwordResetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Reset User Password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" readonly class="form-control" id="user_id" placeholder="Enter Password">
+                <div class="form-group col-md-12">
+                    <label for="user_name">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter Password">
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="user_name">Re type password</label>
+                    <input type="password" class="form-control" id="re_password" placeholder="Re type password">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="resetPassword();">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

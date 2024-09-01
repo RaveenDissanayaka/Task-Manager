@@ -108,7 +108,7 @@ include_once('Common/footer.php');
             var htmlobjCUser = $.ajax({url: urlCUser, async: false});
             if (htmlobjCUser.responseXML.getElementsByTagName("Result")[0].childNodes[0].nodeValue == "TRUE") {
                 myNotification({
-                    message: 'E-mai already exist.'
+                    message: 'E-mail already exist.'
                 });
             }else{
 

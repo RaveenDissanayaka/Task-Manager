@@ -123,4 +123,29 @@ if (strcmp($RequstType, "ActiveUser") == 0) {
 
     $ResponseXML .= "</Validate>";
     echo $ResponseXML;
+}if (strcmp($RequstType, "ResetUserPassword") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $user_id = $_GET["user_id"];
+    $password = md5($_GET["new_pass"]);
+
+    $sql = "UPDATE users SET `password`= :user_password WHERE `user_id` = :user_id";
+    $query = $db->prepare($sql);
+    $query->bindParam(':user_password', $password, PDO::PARAM_STR);
+    $query->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $query->execute();
+    if ($query->rowCount() > 0) {
+        $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[User password has been updated]]></Message>\n";
+    } else {
+        $ResponseXML .= "<Result><![CDATA[False]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[Something went wrong.Please try again]]></Message>\n";
+    }
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
 }
