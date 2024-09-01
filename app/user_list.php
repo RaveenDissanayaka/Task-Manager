@@ -96,7 +96,13 @@ include_once('Common/footer.php');
 ?>
 <script type="text/javascript">
     function viewRow(id) {
-
+        $('#userViewModal').modal('show');
+        var url = '../backend/UserManager.php?RequstType=GetUser';
+        url += '&user_id=' + encodeURIComponent(id);
+        var htmlobj = $.ajax({url: url, async: false});
+        document.getElementById('user_name').innerHTML = htmlobj.responseXML.getElementsByTagName("UserName")[0].childNodes[0].nodeValue
+        document.getElementById('user_email').innerHTML = htmlobj.responseXML.getElementsByTagName("UserEmail")[0].childNodes[0].nodeValue
+        document.getElementById('user_mobile').innerHTML = htmlobj.responseXML.getElementsByTagName("UserTelephone")[0].childNodes[0].nodeValue
     }
     function editRow(id) {
 
@@ -255,6 +261,38 @@ include_once('Common/footer.php');
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" onclick="resetPassword();">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- User View Modal -->
+<div class="modal fade" id="userViewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">View User Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" readonly class="form-control" id="user_id" placeholder="Enter Password">
+                <div class="form-group col-md-12">
+                    <label style="font-size: 14px;" for="user_name">Name : </label>
+                    <b><label id="user_name"></label></b>
+                </div>
+                <div class="form-group col-md-12">
+                    <label style="font-size: 14px;" for="user_name">E-mail : </label>
+                    <b><label id="user_email"></label></b>
+                </div>
+                <div class="form-group col-md-12">
+                    <label style="font-size: 14px;" for="user_name">Mobile No : </label>
+                    <b><label id="user_mobile"></label></b>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

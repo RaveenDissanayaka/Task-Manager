@@ -123,7 +123,8 @@ if (strcmp($RequstType, "ActiveUser") == 0) {
 
     $ResponseXML .= "</Validate>";
     echo $ResponseXML;
-}if (strcmp($RequstType, "ResetUserPassword") == 0) {
+}
+if (strcmp($RequstType, "ResetUserPassword") == 0) {
     header('Content-Type: text/xml');
     echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 
@@ -144,6 +145,31 @@ if (strcmp($RequstType, "ActiveUser") == 0) {
     } else {
         $ResponseXML .= "<Result><![CDATA[False]]></Result>\n";
         $ResponseXML .= "<Message><![CDATA[Something went wrong.Please try again]]></Message>\n";
+    }
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
+}
+if (strcmp($RequstType, "GetUser") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $user_id = $_GET["user_id"];
+
+
+    $sql = "SELECT name,email,telephone,user_status FROM users WHERE `user_id` = :user_id";
+    $query = $db->prepare($sql);
+    $query->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $query->execute();
+    $row = $query->fetch(PDO::FETCH_ASSOC);
+    if ($query->rowCount() > 0) {
+        $ResponseXML .= "<UserName><![CDATA[".$row['name']."]]></UserName>\n";
+        $ResponseXML .= "<UserEmail><![CDATA[".$row['email']."]]></UserEmail>\n";
+        $ResponseXML .= "<UserTelephone><![CDATA[".$row['telephone']."]]></UserTelephone>\n";
+        $ResponseXML .= "<UserStatus><![CDATA[".$row['user_status']."]]></UserStatus>\n";
     }
 
     $ResponseXML .= "</Validate>";
