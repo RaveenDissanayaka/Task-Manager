@@ -100,9 +100,16 @@ include_once('Common/footer.php');
         var url = '../backend/UserManager.php?RequstType=GetUser';
         url += '&user_id=' + encodeURIComponent(id);
         var htmlobj = $.ajax({url: url, async: false});
-        document.getElementById('user_name').innerHTML = htmlobj.responseXML.getElementsByTagName("UserName")[0].childNodes[0].nodeValue
-        document.getElementById('user_email').innerHTML = htmlobj.responseXML.getElementsByTagName("UserEmail")[0].childNodes[0].nodeValue
-        document.getElementById('user_mobile').innerHTML = htmlobj.responseXML.getElementsByTagName("UserTelephone")[0].childNodes[0].nodeValue
+        document.getElementById('user_name').innerHTML = htmlobj.responseXML.getElementsByTagName("UserName")[0].childNodes[0].nodeValue;
+        document.getElementById('user_email').innerHTML = htmlobj.responseXML.getElementsByTagName("UserEmail")[0].childNodes[0].nodeValue;
+        document.getElementById('user_mobile').innerHTML = htmlobj.responseXML.getElementsByTagName("UserTelephone")[0].childNodes[0].nodeValue;
+        if(htmlobj.responseXML.getElementsByTagName("UserStatus")[0].childNodes[0].nodeValue == 1) {
+             document.getElementById("active_status").style.display= 'block';
+          document.getElementById("delete_status").style.display= 'none';
+        }else{
+             document.getElementById("active_status").style.display= 'none';
+            document.getElementById("delete_status").style.display= 'block';
+        }
     }
     function editRow(id) {
 
@@ -289,6 +296,11 @@ include_once('Common/footer.php');
                 <div class="form-group col-md-12">
                     <label style="font-size: 14px;" for="user_name">Mobile No : </label>
                     <b><label id="user_mobile"></label></b>
+                </div>
+                <div class="form-group col-md-12">
+                    <label style="font-size: 14px;" for="user_name">Status : </label>
+                    <span style="display: none;" id="active_status" class="badge bg-success col-md-2">Active</span>
+                    <span style="display: none;" id="delete_status" class="badge bg-danger-light col-md-2">Inactive</span>
                 </div>
             </div>
             <div class="modal-footer">
