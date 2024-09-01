@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="128d5c0d-8b23-46c3-9c21-b38e6f3bec8d" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/user_add.php" afterPath="$PROJECT_DIR$/app/user_add.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/user_list.php" afterPath="$PROJECT_DIR$/app/user_list.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/UserManager.php" afterPath="$PROJECT_DIR$/backend/UserManager.php" />
     </list>
     <ignored path="Task Manager.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,36 +38,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_list.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="user_list.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/user_list.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5814394">
-              <caret line="300" column="67" selection-start-line="300" selection-start-column="67" selection-end-line="300" selection-end-column="67" />
+            <state vertical-scroll-proportion="-16.846153">
+              <caret line="256" column="29" selection-start-line="256" selection-start-column="29" selection-end-line="256" selection-end-column="29" />
               <folding>
+                <element signature="n#div#1;n#!!top" expanded="false" />
+                <element signature="n#div#2;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#label#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#label#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#label#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#label#0;n#div#3;n#div#1;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#div#3;n#div#1;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#1;n#div#3;n#div#1;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
-                <marker date="1725162670030" expanded="true" signature="1091:1172" placeholder="SELECT user_... users" />
+                <element signature="n#style#0;n#label#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+                <marker date="1725186009040" expanded="true" signature="1091:1172" placeholder="SELECT user_... users" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserManager.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserManager.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/UserManager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.884615">
-              <caret line="171" column="36" selection-start-line="171" selection-start-column="26" selection-end-line="171" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.51166964">
+              <caret line="167" column="68" selection-start-line="167" selection-start-column="68" selection-end-line="167" selection-end-column="68" />
               <folding>
-                <marker date="1725161496400" expanded="true" signature="333:373" placeholder="SELECT * FRO... users" />
-                <marker date="1725161496400" expanded="true" signature="1293:1479" placeholder="INSERT INTO users... " />
-                <marker date="1725161496400" expanded="true" signature="2796:2867" placeholder="UPDATE users... " />
-                <marker date="1725161496400" expanded="true" signature="3749:3820" placeholder="UPDATE users... " />
-                <marker date="1725161496400" expanded="true" signature="4727:4797" placeholder="UPDATE users... " />
-                <marker date="1725161496400" expanded="true" signature="5661:5738" placeholder="SELECT name,... users" />
+                <marker date="1725185903314" expanded="true" signature="333:373" placeholder="SELECT * FRO... users" />
+                <marker date="1725185903314" expanded="true" signature="1066:1132" placeholder="SELECT * FRO... users" />
+                <marker date="1725185903314" expanded="true" signature="2113:2299" placeholder="INSERT INTO users... " />
+                <marker date="1725185903314" expanded="true" signature="3616:3687" placeholder="UPDATE users... " />
+                <marker date="1725185903314" expanded="true" signature="4569:4640" placeholder="UPDATE users... " />
+                <marker date="1725185903314" expanded="true" signature="5617:5726" placeholder="UPDATE users... " />
+                <marker date="1725185903314" expanded="true" signature="6763:6833" placeholder="UPDATE users... " />
+                <marker date="1725185903314" expanded="true" signature="7697:7774" placeholder="SELECT name,... users" />
               </folding>
             </state>
           </provider>
@@ -113,9 +122,9 @@
         <option value="$PROJECT_DIR$/app/employee_add.php" />
         <option value="$PROJECT_DIR$/logout.php" />
         <option value="$PROJECT_DIR$/app/Common/footer.php" />
-        <option value="$PROJECT_DIR$/app/user_add.php" />
         <option value="$PROJECT_DIR$/app/Common/menu.php" />
         <option value="$PROJECT_DIR$/assets/css/backend.css" />
+        <option value="$PROJECT_DIR$/app/user_add.php" />
         <option value="$PROJECT_DIR$/backend/UserManager.php" />
         <option value="$PROJECT_DIR$/app/user_list.php" />
       </list>
@@ -218,14 +227,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\Task Manager\app" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\Task Manager\app" />
       <recent name="C:\wamp64\www\Task Manager\assets\js" />
       <recent name="C:\wamp64\www\Task Manager\assets\css" />
       <recent name="C:\wamp64\www\Task Manager\assets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Task Manager\app" />
     </key>
   </component>
   <component name="RunManager">
@@ -674,34 +683,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/user_add.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="94" column="9" selection-start-line="90" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/backend.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.477273">
           <caret line="199" column="19" selection-start-line="199" selection-start-column="19" selection-end-line="199" selection-end-column="19" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/UserManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.884615">
-          <caret line="171" column="36" selection-start-line="171" selection-start-column="26" selection-end-line="171" selection-end-column="36" />
-          <folding>
-            <marker date="1725161496400" expanded="true" signature="333:373" placeholder="SELECT * FRO... users" />
-            <marker date="1725161496400" expanded="true" signature="1293:1479" placeholder="INSERT INTO users... " />
-            <marker date="1725161496400" expanded="true" signature="2796:2867" placeholder="UPDATE users... " />
-            <marker date="1725161496400" expanded="true" signature="3749:3820" placeholder="UPDATE users... " />
-            <marker date="1725161496400" expanded="true" signature="4727:4797" placeholder="UPDATE users... " />
-            <marker date="1725161496400" expanded="true" signature="5661:5738" placeholder="SELECT name,... users" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -715,18 +701,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/user_add.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5529623">
+          <caret line="117" column="18" selection-start-line="110" selection-start-column="11" selection-end-line="117" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/user_list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5814394">
-          <caret line="300" column="67" selection-start-line="300" selection-start-column="67" selection-end-line="300" selection-end-column="67" />
+        <state vertical-scroll-proportion="-16.846153">
+          <caret line="256" column="29" selection-start-line="256" selection-start-column="29" selection-end-line="256" selection-end-column="29" />
           <folding>
+            <element signature="n#div#1;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#!!top" expanded="false" />
             <element signature="n#style#0;n#label#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#div#3;n#div#1;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#3;n#div#1;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#1;n#div#3;n#div#1;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
-            <marker date="1725162670030" expanded="true" signature="1091:1172" placeholder="SELECT user_... users" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+            <marker date="1725186009040" expanded="true" signature="1091:1172" placeholder="SELECT user_... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/UserManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51166964">
+          <caret line="167" column="68" selection-start-line="167" selection-start-column="68" selection-end-line="167" selection-end-column="68" />
+          <folding>
+            <marker date="1725185903314" expanded="true" signature="333:373" placeholder="SELECT * FRO... users" />
+            <marker date="1725185903314" expanded="true" signature="1066:1132" placeholder="SELECT * FRO... users" />
+            <marker date="1725185903314" expanded="true" signature="2113:2299" placeholder="INSERT INTO users... " />
+            <marker date="1725185903314" expanded="true" signature="3616:3687" placeholder="UPDATE users... " />
+            <marker date="1725185903314" expanded="true" signature="4569:4640" placeholder="UPDATE users... " />
+            <marker date="1725185903314" expanded="true" signature="5617:5726" placeholder="UPDATE users... " />
+            <marker date="1725185903314" expanded="true" signature="6763:6833" placeholder="UPDATE users... " />
+            <marker date="1725185903314" expanded="true" signature="7697:7774" placeholder="SELECT name,... users" />
           </folding>
         </state>
       </provider>

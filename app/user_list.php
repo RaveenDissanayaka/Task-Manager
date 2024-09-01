@@ -112,6 +112,14 @@ include_once('Common/footer.php');
         }
     }
     function editRow(id) {
+        $('#userEditModal').modal('show');
+        var url = '../backend/UserManager.php?RequstType=GetUser';
+        url += '&user_id=' + encodeURIComponent(id);
+        var htmlobj = $.ajax({url: url, async: false});
+        document.getElementById('edit_user_id').value = id;
+        document.getElementById('edit_user_name').value = htmlobj.responseXML.getElementsByTagName("UserName")[0].childNodes[0].nodeValue;
+        document.getElementById('edit_user_email').value = htmlobj.responseXML.getElementsByTagName("UserEmail")[0].childNodes[0].nodeValue;
+        document.getElementById('edit_user_mobile').value = htmlobj.responseXML.getElementsByTagName("UserTelephone")[0].childNodes[0].nodeValue;
 
     }
     function resetRow(id) {
@@ -199,6 +207,64 @@ include_once('Common/footer.php');
             }
         }
     });
+    }
+    function updateUser()
+    {
+        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+        if (document.getElementById('edit_user_name').value == "") {
+            myNotification({
+                message: 'Name is required.'
+            });
+        } else if (document.getElementById('edit_user_mobile').value == "") {
+            myNotification({
+                message: 'Mobile No is required.'
+            });
+        } else if (document.getElementById('edit_user_email').value == "") {
+            myNotification({
+                message: 'E mail is required.'
+            });
+        } else if (!document.getElementById('edit_user_email').value.match(validRegex)) {
+            myNotification({
+                message: 'E mail is not valid.'
+            });
+        }else{
+            var urlCUser = '../backend/UserManager.php?RequstType=CheckUserEmailWithID';
+            urlCUser += '&user_id=' + encodeURIComponent(document.getElementById('edit_user_id').value);
+            urlCUser += '&email=' + encodeURIComponent(document.getElementById('edit_user_email').value);
+            var htmlobjCUser = $.ajax({url: urlCUser, async: false});
+            if (htmlobjCUser.responseXML.getElementsByTagName("Result")[0].childNodes[0].nodeValue == "TRUE") {
+                myNotification({
+                    message: 'E-mail already exist.'
+                });
+            }else{
+                var url = '../backend/UserManager.php?RequstType=UpdateUser';
+                url += '&user_id=' + encodeURIComponent(document.getElementById('edit_user_id').value);
+                url += '&user_name=' + encodeURIComponent(document.getElementById('edit_user_name').value);
+                url += '&user_email=' + encodeURIComponent(document.getElementById('edit_user_email').value);
+                url += '&user_mobile=' + encodeURIComponent(document.getElementById('edit_user_mobile').value);
+                var htmlobj = $.ajax({url: url, async: false});
+
+                if (htmlobj.responseXML.getElementsByTagName("Result")[0].childNodes[0].nodeValue == "TRUE") {
+                    $('#userEditModal').modal('hide');
+                    Swal.fire({
+                        title: "Success",
+                        text: htmlobj.responseXML.getElementsByTagName("Message")[0].childNodes[0].nodeValue,
+                        icon: "success"
+                    });
+                    setTimeout(function(){
+                        location.reload();
+                    }, 2000);
+
+                } else {
+                    Swal.fire({
+                        title: "Warning",
+                        text: htmlobj.responseXML.getElementsByTagName("Message")[0].childNodes[0].nodeValue,
+                        icon: "warning"
+                    });
+                }
+            }
+        }
     }
     function resetPassword()
     {
@@ -305,6 +371,41 @@ include_once('Common/footer.php');
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- User Edit Modal -->
+<div class="modal fade" id="userEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit User Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" readonly class="form-control" id="edit_user_id" placeholder="Enter Password">
+                <div class="form-group col-md-12">
+                    <label style="font-size: 14px;" for="user_name">Name : </label>
+                    <input type="text" class="form-control" id="edit_user_name" placeholder="Enter Name">
+                </div>
+                <div class="form-group col-md-12">
+                    <label style="font-size: 14px;" for="user_name">E-mail : </label>
+                    <input type="text" class="form-control" id="edit_user_email" placeholder="Enter E-mail">
+                </div>
+                <div class="form-group col-md-12">
+                    <label style="font-size: 14px;" for="user_name">Mobile No : </label>
+                    <input type="text" class="form-control" id="edit_user_mobile" placeholder="Enter Mobile No">
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="updateUser();">Save</button>
             </div>
         </div>
     </div>

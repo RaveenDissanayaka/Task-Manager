@@ -69,7 +69,7 @@ include_once('Common/footer.php');
 ?>
 <script type="text/javascript">
     function save() {
-
+        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
         if (document.getElementById('user_name').value == "") {
             myNotification({
@@ -82,6 +82,11 @@ include_once('Common/footer.php');
         } else if (document.getElementById('email').value == "") {
             myNotification({
                 message: 'E mail is required.'
+            });
+        }
+        else if (!document.getElementById('email').value.match(validRegex)) {
+            myNotification({
+                message: 'E mail is not valid.'
             });
         }
         else if (document.getElementById('pass').value == "") {
