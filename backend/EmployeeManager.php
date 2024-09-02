@@ -27,6 +27,31 @@ if (strcmp($RequstType, "CheckEmployeeEmail") == 0) {
     $ResponseXML .= "</Validate>";
     echo $ResponseXML;
 }
+if (strcmp($RequstType, "CheckEmployeeEmailWithID") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $email = $_GET["email"];
+    $employee_id = $_GET["employee_id"];
+
+    $sql = "SELECT * FROM users WHERE email = :email AND `user_id` != :employee_id";
+    $query = $db->prepare($sql);
+    $query->bindParam(':employee_id', $employee_id, PDO::PARAM_STR);
+    $query->bindParam(':email', $email, PDO::PARAM_STR);
+    $query->execute();
+    $results = $query->fetchAll(PDO::FETCH_OBJ);
+    if ($query->rowCount() > 0) {
+        $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
+    } else {
+        $ResponseXML .= "<Result><![CDATA[FALSE]]></Result>\n";
+    }
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
+}
 if (strcmp($RequstType, "SaveNewEmployee") == 0) {
     header('Content-Type: text/xml');
     echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
@@ -149,6 +174,36 @@ if (strcmp($RequstType, "GetEmployee") == 0) {
         $ResponseXML .= "<EmployeeEmail><![CDATA[".$row['email']."]]></EmployeeEmail>\n";
         $ResponseXML .= "<EmployeeTelephone><![CDATA[".$row['telephone']."]]></EmployeeTelephone>\n";
         $ResponseXML .= "<EmployeeStatus><![CDATA[".$row['user_status']."]]></EmployeeStatus>\n";
+    }
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
+}
+if (strcmp($RequstType, "UpdateEmployee") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $employee_id = $_GET["employee_id"];
+    $employee_name = $_GET["employee_name"];
+    $employee_email = $_GET["employee_email"];
+    $employee_mobile = $_GET["employee_mobile"];
+
+    $sql = "UPDATE users SET `name`= :employee_name,`email`= :employee_email,`telephone`= :employee_mobile WHERE `user_id` = :employee_id";
+    $query = $db->prepare($sql);
+    $query->bindParam(':employee_name', $employee_name, PDO::PARAM_STR);
+    $query->bindParam(':employee_email', $employee_email, PDO::PARAM_STR);
+    $query->bindParam(':employee_mobile', $employee_mobile, PDO::PARAM_STR);
+    $query->bindParam(':employee_id', $employee_id, PDO::PARAM_INT);
+    $query->execute();
+    if ($query->rowCount() > 0) {
+        $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[Employee has been updated]]></Message>\n";
+    } else {
+        $ResponseXML .= "<Result><![CDATA[False]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[Something went wrong.Please try again]]></Message>\n";
     }
 
     $ResponseXML .= "</Validate>";

@@ -63,6 +63,11 @@ include_once('Common/menu.php');
                                                data-original-title="Delete" href="#"
                                                onclick="deleteRow(<?php echo $row['user_id']; ?>);"><i
                                                     class="ri-delete-bin-line mr-0"></i></a>
+                                            <a class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top"
+                                               title=""
+                                               data-original-title="Reset Password" href="#"
+                                               onclick="resetRow(<?php echo $row['user_id']; ?>);"><i
+                                                    class="ri-key-fill mr-0"></i></a>
                                         <?php } else { ?>
                                             <a class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top"
                                                title=""
@@ -107,6 +112,15 @@ include_once('Common/footer.php');
         }
     }
     function editRow(id) {
+        $('#employeeEditModal').modal('show');
+        var url = '../backend/EmployeeManager.php?RequstType=GetEmployee';
+        url += '&employee_id=' + encodeURIComponent(id);
+        var htmlobj = $.ajax({url: url, async: false});
+        document.getElementById('edit_employee_id').value = id;
+        document.getElementById('edit_employee_name').value = htmlobj.responseXML.getElementsByTagName("EmployeeName")[0].childNodes[0].nodeValue;
+        document.getElementById('edit_employee_email').value = htmlobj.responseXML.getElementsByTagName("EmployeeEmail")[0].childNodes[0].nodeValue;
+        document.getElementById('edit_employee_mobile').value = htmlobj.responseXML.getElementsByTagName("EmployeeTelephone")[0].childNodes[0].nodeValue;
+
 
     }
     function deleteRow(id) {
@@ -176,6 +190,105 @@ include_once('Common/footer.php');
             }
         }
     });
+    }
+    function updateEmployee()
+    {
+        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+        if (document.getElementById('edit_employee_name').value == "") {
+            myNotification({
+                message: 'Name is required.'
+            });
+        } else if (document.getElementById('edit_employee_mobile').value == "") {
+            myNotification({
+                message: 'Mobile No is required.'
+            });
+        } else if (document.getElementById('edit_employee_email').value == "") {
+            myNotification({
+                message: 'E mail is required.'
+            });
+        } else if (!document.getElementById('edit_employee_email').value.match(validRegex)) {
+            myNotification({
+                message: 'E mail is not valid.'
+            });
+        }else{
+            var urlCUser = '../backend/EmployeeManager.php?RequstType=CheckEmployeeEmailWithID';
+            urlCUser += '&employee_id=' + encodeURIComponent(document.getElementById('edit_employee_id').value);
+            urlCUser += '&email=' + encodeURIComponent(document.getElementById('edit_employee_email').value);
+            var htmlobjCUser = $.ajax({url: urlCUser, async: false});
+            if (htmlobjCUser.responseXML.getElementsByTagName("Result")[0].childNodes[0].nodeValue == "TRUE") {
+                myNotification({
+                    message: 'E-mail already exist.'
+                });
+            }else{
+                var url = '../backend/EmployeeManager.php?RequstType=UpdateEmployee';
+                url += '&employee_id=' + encodeURIComponent(document.getElementById('edit_employee_id').value);
+                url += '&employee_name=' + encodeURIComponent(document.getElementById('edit_employee_name').value);
+                url += '&employee_email=' + encodeURIComponent(document.getElementById('edit_employee_email').value);
+                url += '&employee_mobile=' + encodeURIComponent(document.getElementById('edit_employee_mobile').value);
+                var htmlobj = $.ajax({url: url, async: false});
+
+                if (htmlobj.responseXML.getElementsByTagName("Result")[0].childNodes[0].nodeValue == "TRUE") {
+                    $('#employeeEditModal').modal('hide');
+                    Swal.fire({
+                        title: "Success",
+                        text: htmlobj.responseXML.getElementsByTagName("Message")[0].childNodes[0].nodeValue,
+                        icon: "success"
+                    });
+                    setTimeout(function(){
+                        location.reload();
+                    }, 2000);
+
+                } else {
+                    Swal.fire({
+                        title: "Warning",
+                        text: htmlobj.responseXML.getElementsByTagName("Message")[0].childNodes[0].nodeValue,
+                        icon: "warning"
+                    });
+                }
+            }
+        }
+    }
+    function resetPassword()
+    {
+        if (document.getElementById('password').value == "") {
+            myNotification({
+                message: 'Password is required.'
+            });
+        }  else if (document.getElementById('password').value.length < 5) {
+            myNotification({
+                message: 'Password contains at least 5 characters.'
+            });
+        }else if (document.getElementById('re_password').value == "") {
+            myNotification({
+                message: 'Re type password is required.'
+            });
+        }else if (document.getElementById('password').value != document.getElementById('re_password').value) {
+            myNotification({
+                message: 'Password and Re type password should be same.'
+            });
+        }else{
+            var url = '../backend/EmployeeManager.php?RequstType=ResetUserPassword';
+            url += '&user_id=' + encodeURIComponent(document.getElementById('user_id').value);
+            url += '&new_pass=' + encodeURIComponent(document.getElementById('password').value);
+            var htmlobj = $.ajax({url: url, async: false});
+
+            if (htmlobj.responseXML.getElementsByTagName("Result")[0].childNodes[0].nodeValue == "TRUE") {
+                $('#passwordResetModal').modal('hide');
+                Swal.fire({
+                    title: "Success",
+                    text: htmlobj.responseXML.getElementsByTagName("Message")[0].childNodes[0].nodeValue,
+                    icon: "success"
+                });
+
+            } else {
+                Swal.fire({
+                    title: "Warning",
+                    text: htmlobj.responseXML.getElementsByTagName("Message")[0].childNodes[0].nodeValue,
+                    icon: "warning"
+                });
+            }
+        }
     }
 </script>
 
@@ -247,7 +360,7 @@ include_once('Common/footer.php');
 
 
 <!-- Employee Edit Modal -->
-<div class="modal fade" id="userEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="employeeEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -257,24 +370,24 @@ include_once('Common/footer.php');
                 </button>
             </div>
             <div class="modal-body">
-                <input type="hidden" readonly class="form-control" id="edit_user_id" placeholder="Enter Password">
+                <input type="hidden" readonly class="form-control" id="edit_employee_id" placeholder="Enter Password">
                 <div class="form-group col-md-12">
                     <label style="font-size: 14px;" for="user_name">Name : </label>
-                    <input type="text" class="form-control" id="edit_user_name" placeholder="Enter Name">
+                    <input type="text" class="form-control" id="edit_employee_name" placeholder="Enter Name">
                 </div>
                 <div class="form-group col-md-12">
                     <label style="font-size: 14px;" for="user_name">E-mail : </label>
-                    <input type="text" class="form-control" id="edit_user_email" placeholder="Enter E-mail">
+                    <input type="text" class="form-control" id="edit_employee_email" placeholder="Enter E-mail">
                 </div>
                 <div class="form-group col-md-12">
                     <label style="font-size: 14px;" for="user_name">Mobile No : </label>
-                    <input type="text" class="form-control" id="edit_user_mobile" placeholder="Enter Mobile No">
+                    <input type="text" class="form-control" id="edit_employee_mobile" placeholder="Enter Mobile No">
                 </div>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="updateUser();">Save</button>
+                <button type="button" class="btn btn-primary" onclick="updateEmployee();">Save</button>
             </div>
         </div>
     </div>
