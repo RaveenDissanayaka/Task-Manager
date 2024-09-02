@@ -249,6 +249,24 @@ include_once('Common/footer.php');
             }
         }
     }
+    function resetRow(id) {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You want to reset employee password?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, reset it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+            $('#passwordResetModal').modal('show');
+            document.getElementById('password').value = "";
+            document.getElementById('re_password').value = "";
+            document.getElementById('employee_id').value = id;
+        }
+    });
+    }
     function resetPassword()
     {
         if (document.getElementById('password').value == "") {
@@ -268,8 +286,8 @@ include_once('Common/footer.php');
                 message: 'Password and Re type password should be same.'
             });
         }else{
-            var url = '../backend/EmployeeManager.php?RequstType=ResetUserPassword';
-            url += '&user_id=' + encodeURIComponent(document.getElementById('user_id').value);
+            var url = '../backend/EmployeeManager.php?RequstType=ResetEmployeePassword';
+            url += '&employee_id=' + encodeURIComponent(document.getElementById('employee_id').value);
             url += '&new_pass=' + encodeURIComponent(document.getElementById('password').value);
             var htmlobj = $.ajax({url: url, async: false});
 
@@ -297,13 +315,13 @@ include_once('Common/footer.php');
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Reset User Password</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Reset Employee Password</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <input type="hidden" readonly class="form-control" id="user_id" placeholder="Enter Password">
+                <input type="hidden" readonly class="form-control" id="employee_id" placeholder="Enter Password">
                 <div class="form-group col-md-12">
                     <label for="user_name">Password</label>
                     <input type="password" class="form-control" id="password" placeholder="Enter Password">
@@ -364,7 +382,7 @@ include_once('Common/footer.php');
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit User Details</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Employee Details</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

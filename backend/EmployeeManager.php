@@ -209,3 +209,29 @@ if (strcmp($RequstType, "UpdateEmployee") == 0) {
     $ResponseXML .= "</Validate>";
     echo $ResponseXML;
 }
+if (strcmp($RequstType, "ResetEmployeePassword") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $employee_id = $_GET["employee_id"];
+    $password = md5($_GET["new_pass"]);
+
+    $sql = "UPDATE users SET `password`= :employee_password WHERE `user_id` = :employee_id";
+    $query = $db->prepare($sql);
+    $query->bindParam(':employee_password', $password, PDO::PARAM_STR);
+    $query->bindParam(':employee_id', $employee_id, PDO::PARAM_INT);
+    $query->execute();
+    if ($query->rowCount() > 0) {
+        $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[Employee password has been updated]]></Message>\n";
+    } else {
+        $ResponseXML .= "<Result><![CDATA[False]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[Something went wrong.Please try again]]></Message>\n";
+    }
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
+}
