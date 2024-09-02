@@ -129,3 +129,28 @@ if (strcmp($RequstType, "DeleteEmployee") == 0) {
     $ResponseXML .= "</Validate>";
     echo $ResponseXML;
 }
+if (strcmp($RequstType, "GetEmployee") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $employee_id = $_GET["employee_id"];
+
+
+    $sql = "SELECT name,email,telephone,user_status FROM users WHERE `user_id` = :employee_id";
+    $query = $db->prepare($sql);
+    $query->bindParam(':employee_id', $employee_id, PDO::PARAM_INT);
+    $query->execute();
+    $row = $query->fetch(PDO::FETCH_ASSOC);
+    if ($query->rowCount() > 0) {
+        $ResponseXML .= "<EmployeeName><![CDATA[".$row['name']."]]></EmployeeName>\n";
+        $ResponseXML .= "<EmployeeEmail><![CDATA[".$row['email']."]]></EmployeeEmail>\n";
+        $ResponseXML .= "<EmployeeTelephone><![CDATA[".$row['telephone']."]]></EmployeeTelephone>\n";
+        $ResponseXML .= "<EmployeeStatus><![CDATA[".$row['user_status']."]]></EmployeeStatus>\n";
+    }
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
+}

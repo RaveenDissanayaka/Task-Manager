@@ -91,7 +91,20 @@ include_once('Common/footer.php');
 ?>
 <script type="text/javascript">
     function viewRow(id) {
-
+        $('#employeeViewModal').modal('show');
+        var url = '../backend/EmployeeManager.php?RequstType=GetEmployee';
+        url += '&employee_id=' + encodeURIComponent(id);
+        var htmlobj = $.ajax({url: url, async: false});
+        document.getElementById('employee_name').innerHTML = htmlobj.responseXML.getElementsByTagName("EmployeeName")[0].childNodes[0].nodeValue;
+        document.getElementById('employee_email').innerHTML = htmlobj.responseXML.getElementsByTagName("EmployeeEmail")[0].childNodes[0].nodeValue;
+        document.getElementById('employee_mobile').innerHTML = htmlobj.responseXML.getElementsByTagName("EmployeeTelephone")[0].childNodes[0].nodeValue;
+        if(htmlobj.responseXML.getElementsByTagName("EmployeeStatus")[0].childNodes[0].nodeValue == 1) {
+            document.getElementById("active_status").style.display= 'block';
+            document.getElementById("delete_status").style.display= 'none';
+        }else{
+            document.getElementById("active_status").style.display= 'none';
+            document.getElementById("delete_status").style.display= 'block';
+        }
     }
     function editRow(id) {
 
@@ -166,4 +179,103 @@ include_once('Common/footer.php');
     }
 </script>
 
+<!-- Password Reset Modal -->
+<div class="modal fade" id="passwordResetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Reset User Password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" readonly class="form-control" id="user_id" placeholder="Enter Password">
+                <div class="form-group col-md-12">
+                    <label for="user_name">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter Password">
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="user_name">Re type password</label>
+                    <input type="password" class="form-control" id="re_password" placeholder="Re type password">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="resetPassword();">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- Employee View Modal -->
+<div class="modal fade" id="employeeViewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">View Employee Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" readonly class="form-control" id="user_id" placeholder="Enter Password">
+                <div class="form-group col-md-12">
+                    <label style="font-size: 14px;" for="employee_name">Name : </label>
+                    <b><label id="employee_name"></label></b>
+                </div>
+                <div class="form-group col-md-12">
+                    <label style="font-size: 14px;" for="employee_name">E-mail : </label>
+                    <b><label id="employee_email"></label></b>
+                </div>
+                <div class="form-group col-md-12">
+                    <label style="font-size: 14px;" for="employee_name">Mobile No : </label>
+                    <b><label id="employee_mobile"></label></b>
+                </div>
+                <div class="form-group col-md-12">
+                    <label style="font-size: 14px;" for="user_name">Status : </label>
+                    <span style="display: none;" id="active_status" class="badge bg-success col-md-2">Active</span>
+                    <span style="display: none;" id="delete_status" class="badge bg-danger-light col-md-2">Inactive</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Employee Edit Modal -->
+<div class="modal fade" id="userEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit User Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" readonly class="form-control" id="edit_user_id" placeholder="Enter Password">
+                <div class="form-group col-md-12">
+                    <label style="font-size: 14px;" for="user_name">Name : </label>
+                    <input type="text" class="form-control" id="edit_user_name" placeholder="Enter Name">
+                </div>
+                <div class="form-group col-md-12">
+                    <label style="font-size: 14px;" for="user_name">E-mail : </label>
+                    <input type="text" class="form-control" id="edit_user_email" placeholder="Enter E-mail">
+                </div>
+                <div class="form-group col-md-12">
+                    <label style="font-size: 14px;" for="user_name">Mobile No : </label>
+                    <input type="text" class="form-control" id="edit_user_mobile" placeholder="Enter Mobile No">
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="updateUser();">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
