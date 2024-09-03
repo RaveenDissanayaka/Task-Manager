@@ -82,7 +82,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="">
+                            <li <?php if ($is_task == 1) { ?>      class="active" <?php } ?>>
                                 <a href="#task" class="collapsed" data-toggle="collapse" aria-expanded="false">
                                     <svg class="svg-icon" width="25" height="25" xmlns="http://www.w3.org/2000/svg"
                                          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -97,8 +97,8 @@
                                 </a>
                                 <ul id="task" class="iq-submenu collapse" data-parent="#otherpage">
 
-                                    <li class="">
-                                        <a href="../app/user-add.html">
+                                    <li <?php if ($is_task_add == 1) { ?>      class="active" <?php } ?>>
+                                        <a href="../app/task_add.php">
                                             <i class="las la-minus"></i><span>Task Add</span>
                                         </a>
                                     </li>
