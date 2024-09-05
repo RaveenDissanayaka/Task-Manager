@@ -47,6 +47,6 @@ $is_employee_add = 0;
 $is_employee_list = 0;
 $is_task = 0;
 $is_task_add = 0;
-
+$is_profile = 0;
 
 ?>

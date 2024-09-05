@@ -148,7 +148,14 @@
                                     </li>
                                 </ul>
                             </li>
-
+                            <li <?php if ($is_profile == 1) { ?>      class="active" <?php } ?> >
+                                <a href="../app/user_profile.php" class="svg-icon">
+                                    <svg class="svg-icon" id="p-dash10" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline>
+                                    </svg>
+                                    <span class="ml-4">User Profile  </span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -270,11 +277,11 @@
                                             <?php
 
                                             $user_id = $_SESSION['userid'];
-                                            $query = $db->prepare("SELECT  name FROM users WHERE (user_id=:user_id)");
+                                            $query = $db->prepare("SELECT  name,email,telephone FROM users WHERE (user_id=:user_id)");
                                             $query->execute(array(':user_id' => $user_id));
-                                            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                                            $row = $query->fetch(PDO::FETCH_ASSOC);
                                                 echo $row['name'];
-                                            }
+
                                             ?>
 
                                             <i class="las la-angle-down ml-2"></i></h6>
@@ -289,7 +296,7 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                   d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                         </svg>
-                                        <a href="../app/user-profile.html">My Profile</a>
+                                        <a href="../app/user_profile.php">My Profile</a>
                                     </li>
 
                                     <li class="dropdown-item  d-flex svg-icon border-top">
