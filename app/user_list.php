@@ -399,7 +399,7 @@ include_once('Common/footer.php');
                 </div>
                 <div class="form-group col-md-12">
                     <label style="font-size: 14px;" for="user_name">Mobile No : </label>
-                    <input type="text" class="form-control" id="edit_user_mobile" placeholder="Enter Mobile No">
+                    <input type="text" class="form-control" id="edit_user_mobile" placeholder="Enter Mobile No" onkeypress="return numbersOnly(event)">
                 </div>
 
             </div>

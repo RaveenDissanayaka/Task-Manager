@@ -179,6 +179,34 @@ if (strcmp($RequstType, "UpdateUser") == 0) {
     $ResponseXML .= "</Validate>";
     echo $ResponseXML;
 }
+if (strcmp($RequstType, "UpdateUserProfile") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $user_id =  $_SESSION["userid"];
+    $user_name = $_GET["user_name"];
+    $user_mobile = $_GET["mobile_no"];
+
+    $sql = "UPDATE users SET `name`= :user_name,`telephone`= :user_mobile WHERE `user_id` = :user_id";
+    $query = $db->prepare($sql);
+    $query->bindParam(':user_name', $user_name, PDO::PARAM_STR);
+    $query->bindParam(':user_mobile', $user_mobile, PDO::PARAM_STR);
+    $query->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $query->execute();
+    if ($query->rowCount() > 0) {
+        $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[User profile has been updated]]></Message>\n";
+    } else {
+        $ResponseXML .= "<Result><![CDATA[False]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[Something went wrong.Please try again]]></Message>\n";
+    }
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
+}
 if (strcmp($RequstType, "ResetUserPassword") == 0) {
     header('Content-Type: text/xml');
     echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";

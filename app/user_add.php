@@ -29,7 +29,7 @@ include_once('Common/menu.php');
                             <div class="form-group col-md-6">
                                 <label for="mobno">Mobile Number:</label>
                                 <input type="text" class="form-control" id="mobile_no" placeholder="Enter Mobile Number"
-                                       maxlength="10">
+                                       maxlength="10" onkeypress="return numbersOnly(event)">
                             </div>
 
                         </div>

@@ -27,7 +27,7 @@
 <!-- Chart Custom JavaScript -->
 <script async src="../assets/js/chart-custom.js"></script>
 <!-- Chart Custom JavaScript -->
-<script async src="../../assets/js/slider.js"></script>
+<script async src="../assets/js/slider.js"></script>
 
 <!-- app JavaScript -->
 <script src="../assets/js/app.js"></script>
@@ -64,6 +64,23 @@
         // success, info, warning, error, and none
         theme: 'error'
     });
+
+    function numbersOnly(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+    function decimalOnly(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode != 46 && charCode > 31
+            && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
 </script>
 
 
