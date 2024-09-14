@@ -130,7 +130,7 @@ include_once('Common/footer.php');
             myNotification({
                 message: 'New Password is required.'
             });
-        }  else if (document.getElementById('password').value.length < 5) {
+        }  else if (document.getElementById('new_password').value.length < 5) {
             myNotification({
                 message: 'New Password contains at least 5 characters.'
             });

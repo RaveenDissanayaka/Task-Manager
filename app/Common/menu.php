@@ -102,8 +102,8 @@
                                             <i class="las la-minus"></i><span>Task Add</span>
                                         </a>
                                     </li>
-                                    <li class="">
-                                        <a href="../app/user-list.html">
+                                    <li <?php if ($is_task_list == 1) { ?>      class="active" <?php } ?>>
+                                        <a href="../app/task_list.php">
                                             <i class="las la-minus"></i><span>Task List</span>
                                         </a>
                                     </li>
