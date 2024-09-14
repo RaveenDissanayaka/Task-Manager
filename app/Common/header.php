@@ -49,5 +49,6 @@ $is_task = 0;
 $is_task_add = 0;
 $is_profile = 0;
 $is_task_list = 0;
-
+$is_activity = 0;
+$is_activity_add = 0;
 ?>

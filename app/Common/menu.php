@@ -107,14 +107,14 @@
                                             <i class="las la-minus"></i><span>Task List</span>
                                         </a>
                                     </li>
-                                    <li class="">
-                                        <a href="../app/user-list.html">
-                                            <i class="las la-minus"></i><span>Task Assign</span>
-                                        </a>
-                                    </li>
+<!--                                    <li class="">-->
+<!--                                        <a href="../app/user-list.html">-->
+<!--                                            <i class="las la-minus"></i><span>Task Assign</span>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
                                 </ul>
                             </li>
-                            <li class="">
+                            <li <?php if ($is_activity == 1) { ?>      class="active" <?php } ?>>
                                 <a href="#activity" class="collapsed" data-toggle="collapse" aria-expanded="false">
                                     <svg class="svg-icon" id="p-dash14" width="20" height="20"
                                          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -131,8 +131,8 @@
                                 </a>
                                 <ul id="activity" class="iq-submenu collapse" data-parent="#otherpage">
 
-                                    <li class="">
-                                        <a href="../app/user-add.html">
+                                    <li <?php if ($is_activity_add == 1) { ?>      class="active" <?php } ?>>
+                                        <a href="../app/activity_add.php">
                                             <i class="las la-minus"></i><span>Activity Add</span>
                                         </a>
                                     </li>
