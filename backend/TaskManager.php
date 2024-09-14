@@ -68,3 +68,28 @@ if (strcmp($RequstType, "SaveNewTask") == 0) {
     $ResponseXML .= "</Validate>";
     echo $ResponseXML;
 }
+if (strcmp($RequstType, "GetTask") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $task_id = $_GET["task_id"];
+
+
+    $sql = "SELECT task_name,task_description,closing_date,task_status FROM tasks WHERE `taskId` = :task_id";
+    $query = $db->prepare($sql);
+    $query->bindParam(':task_id', $task_id, PDO::PARAM_INT);
+    $query->execute();
+    $row = $query->fetch(PDO::FETCH_ASSOC);
+    if ($query->rowCount() > 0) {
+        $ResponseXML .= "<TaskName><![CDATA[".$row['task_name']."]]></TaskName>\n";
+        $ResponseXML .= "<ClosingDate><![CDATA[".$row['closing_date']."]]></ClosingDate>\n";
+        $ResponseXML .= "<TaskDascription><![CDATA[".$row['task_description']."]]></TaskDascription>\n";
+        $ResponseXML .= "<TaskStatus><![CDATA[".$row['task_status']."]]></TaskStatus>\n";
+    }
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
+}

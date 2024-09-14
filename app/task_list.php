@@ -92,14 +92,14 @@ include_once('Common/footer.php');
 ?>
 <script type="text/javascript">
     function viewRow(id) {
-        $('#userViewModal').modal('show');
-        var url = '../backend/UserManager.php?RequstType=GetUser';
-        url += '&user_id=' + encodeURIComponent(id);
+        $('#taskViewModal').modal('show');
+        var url = '../backend/TaskManager.php?RequstType=GetTask';
+        url += '&task_id=' + encodeURIComponent(id);
         var htmlobj = $.ajax({url: url, async: false});
-        document.getElementById('user_name').innerHTML = htmlobj.responseXML.getElementsByTagName("UserName")[0].childNodes[0].nodeValue;
-        document.getElementById('user_email').innerHTML = htmlobj.responseXML.getElementsByTagName("UserEmail")[0].childNodes[0].nodeValue;
-        document.getElementById('user_mobile').innerHTML = htmlobj.responseXML.getElementsByTagName("UserTelephone")[0].childNodes[0].nodeValue;
-        if(htmlobj.responseXML.getElementsByTagName("UserStatus")[0].childNodes[0].nodeValue == 1) {
+        document.getElementById('task_name').innerHTML = htmlobj.responseXML.getElementsByTagName("TaskName")[0].childNodes[0].nodeValue;
+        document.getElementById('closing_date').innerHTML = htmlobj.responseXML.getElementsByTagName("ClosingDate")[0].childNodes[0].nodeValue;
+        document.getElementById('task_description').innerHTML = htmlobj.responseXML.getElementsByTagName("TaskDascription")[0].childNodes[0].nodeValue;
+        if(htmlobj.responseXML.getElementsByTagName("TaskStatus")[0].childNodes[0].nodeValue == 1) {
              document.getElementById("active_status").style.display= 'block';
           document.getElementById("delete_status").style.display= 'none';
         }else{
@@ -262,102 +262,32 @@ include_once('Common/footer.php');
             }
         }
     }
-    function resetPassword()
-    {
-        if (document.getElementById('password').value == "") {
-            myNotification({
-                message: 'Password is required.'
-            });
-        }  else if (document.getElementById('password').value.length < 5) {
-            myNotification({
-                message: 'Password contains at least 5 characters.'
-            });
-        }else if (document.getElementById('re_password').value == "") {
-            myNotification({
-                message: 'Re type password is required.'
-            });
-        }else if (document.getElementById('password').value != document.getElementById('re_password').value) {
-            myNotification({
-                message: 'Password and Re type password should be same.'
-            });
-        }else{
-            var url = '../backend/UserManager.php?RequstType=ResetUserPassword';
-            url += '&user_id=' + encodeURIComponent(document.getElementById('user_id').value);
-            url += '&new_pass=' + encodeURIComponent(document.getElementById('password').value);
-            var htmlobj = $.ajax({url: url, async: false});
 
-            if (htmlobj.responseXML.getElementsByTagName("Result")[0].childNodes[0].nodeValue == "TRUE") {
-                $('#passwordResetModal').modal('hide');
-                Swal.fire({
-                    title: "Success",
-                    text: htmlobj.responseXML.getElementsByTagName("Message")[0].childNodes[0].nodeValue,
-                    icon: "success"
-                });
-
-            } else {
-                Swal.fire({
-                    title: "Warning",
-                    text: htmlobj.responseXML.getElementsByTagName("Message")[0].childNodes[0].nodeValue,
-                    icon: "warning"
-                });
-            }
-        }
-    }
 </script>
 
 
-<!-- Password Reset Modal -->
-<div class="modal fade" id="passwordResetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Task View Modal -->
+<div class="modal fade" id="taskViewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Reset User Password</h5>
+                <h5 class="modal-title" id="exampleModalLabel">View Task Details</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <input type="hidden" readonly class="form-control" id="user_id" placeholder="Enter Password">
                 <div class="form-group col-md-12">
-                    <label for="user_name">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Enter Password">
+                    <label style="font-size: 14px;" for="user_name">Task Name : </label>
+                    <b><label id="task_name"></label></b>
                 </div>
                 <div class="form-group col-md-12">
-                    <label for="user_name">Re type password</label>
-                    <input type="password" class="form-control" id="re_password" placeholder="Re type password">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="resetPassword();">Save</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- User View Modal -->
-<div class="modal fade" id="userViewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">View User Details</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <input type="hidden" readonly class="form-control" id="user_id" placeholder="Enter Password">
-                <div class="form-group col-md-12">
-                    <label style="font-size: 14px;" for="user_name">Name : </label>
-                    <b><label id="user_name"></label></b>
+                    <label style="font-size: 14px;" for="user_name">Closing Date : </label>
+                    <b><label id="closing_date"></label></b>
                 </div>
                 <div class="form-group col-md-12">
-                    <label style="font-size: 14px;" for="user_name">E-mail : </label>
-                    <b><label id="user_email"></label></b>
-                </div>
-                <div class="form-group col-md-12">
-                    <label style="font-size: 14px;" for="user_name">Mobile No : </label>
-                    <b><label id="user_mobile"></label></b>
+                    <label style="font-size: 14px;" for="user_name">Task Description : </label>
+                    <b><label id="task_description"></label></b>
                 </div>
                 <div class="form-group col-md-12">
                     <label style="font-size: 14px;" for="user_name">Status : </label>
