@@ -148,3 +148,55 @@ if (strcmp($RequstType, "UpdateTask") == 0) {
     $ResponseXML .= "</Validate>";
     echo $ResponseXML;
 }
+if (strcmp($RequstType, "DeleteTask") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $task_id = $_GET["task_id"];
+    $task_status = '0';
+
+    $sql = "UPDATE tasks SET `task_status`= :task_status WHERE `taskId` = :task_id";
+    $query = $db->prepare($sql);
+    $query->bindParam(':task_status', $task_status, PDO::PARAM_STR);
+    $query->bindParam(':task_id', $task_id, PDO::PARAM_INT);
+    $query->execute();
+    if ($query->rowCount() > 0) {
+        $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[Task has been deleted]]></Message>\n";
+    } else {
+        $ResponseXML .= "<Result><![CDATA[False]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[Something went wrong.Please try again]]></Message>\n";
+    }
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
+}
+if (strcmp($RequstType, "ActiveTask") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $task_id = $_GET["task_id"];
+    $task_status = '1';
+
+    $sql = "UPDATE tasks SET `task_status`= :task_status WHERE `taskId` = :task_id";
+    $query = $db->prepare($sql);
+    $query->bindParam(':task_status', $task_status, PDO::PARAM_STR);
+    $query->bindParam(':task_id', $task_id, PDO::PARAM_INT);
+    $query->execute();
+    if ($query->rowCount() > 0) {
+        $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[Task has been activated]]></Message>\n";
+    } else {
+        $ResponseXML .= "<Result><![CDATA[False]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[Something went wrong.Please try again]]></Message>\n";
+    }
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
+}

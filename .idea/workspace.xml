@@ -40,14 +40,16 @@
       <file leaf-file-name="TaskManager.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/TaskManager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6642729">
-              <caret line="132" column="24" selection-start-line="132" selection-start-column="24" selection-end-line="132" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.35906643">
+              <caret line="183" column="29" selection-start-line="183" selection-start-column="29" selection-end-line="183" selection-end-column="29" />
               <folding>
-                <marker date="1726326557952" expanded="true" signature="340:388" placeholder="SELECT * FRO... tasks" />
-                <marker date="1726326557952" expanded="true" signature="1282:1466" placeholder="INSERT INTO users... " />
-                <marker date="1726326557952" expanded="true" signature="2662:2757" placeholder="SELECT task_... tasks" />
-                <marker date="1726326557952" expanded="true" signature="3688:3761" placeholder="SELECT * FRO... users" />
-                <marker date="1726326557952" expanded="true" signature="4615:4749" placeholder="UPDATE users... " />
+                <marker date="1726326995842" expanded="true" signature="340:388" placeholder="SELECT * FRO... tasks" />
+                <marker date="1726326995842" expanded="true" signature="1282:1466" placeholder="INSERT INTO users... " />
+                <marker date="1726326995842" expanded="true" signature="2662:2757" placeholder="SELECT task_... tasks" />
+                <marker date="1726326995842" expanded="true" signature="3688:3761" placeholder="SELECT * FRO... users" />
+                <marker date="1726326995842" expanded="true" signature="4615:4749" placeholder="UPDATE users... " />
+                <marker date="1726326995842" expanded="true" signature="5777:5847" placeholder="UPDATE users... " />
+                <marker date="1726326995842" expanded="true" signature="6729:6799" placeholder="UPDATE tasks... " />
               </folding>
             </state>
           </provider>
@@ -56,11 +58,11 @@
       <file leaf-file-name="task_list.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/task_list.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.581818">
-              <caret line="214" column="41" selection-start-line="214" selection-start-column="25" selection-end-line="214" selection-end-column="41" />
+            <state vertical-scroll-proportion="-3.1090908">
+              <caret line="167" column="28" selection-start-line="167" selection-start-column="21" selection-end-line="167" selection-end-column="28" />
               <folding>
                 <element signature="n#div#1;n#!!top" expanded="false" />
-                <marker date="1726326322810" expanded="true" signature="1109:1186" placeholder="SELECT taskI... tasks" />
+                <marker date="1726326879835" expanded="true" signature="1109:1186" placeholder="SELECT taskI... tasks" />
               </folding>
             </state>
           </provider>
@@ -69,8 +71,8 @@
       <file leaf-file-name="UserManager.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/UserManager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.923077">
-              <caret line="181" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+            <state vertical-scroll-proportion="-1.8076923">
+              <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="150" selection-end-column="1" />
               <folding>
                 <marker date="1725810260953" expanded="true" signature="333:373" placeholder="SELECT * FRO... users" />
                 <marker date="1725810260953" expanded="true" signature="2113:2299" placeholder="INSERT INTO users... " />
@@ -674,8 +676,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/UserManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.923077">
-          <caret line="181" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+        <state vertical-scroll-proportion="-1.8076923">
+          <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="150" selection-end-column="1" />
           <folding>
             <marker date="1725810260953" expanded="true" signature="333:373" placeholder="SELECT * FRO... users" />
             <marker date="1725810260953" expanded="true" signature="2113:2299" placeholder="INSERT INTO users... " />
@@ -693,25 +695,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/task_list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.581818">
-          <caret line="214" column="41" selection-start-line="214" selection-start-column="25" selection-end-line="214" selection-end-column="41" />
+        <state vertical-scroll-proportion="-3.1090908">
+          <caret line="167" column="28" selection-start-line="167" selection-start-column="21" selection-end-line="167" selection-end-column="28" />
           <folding>
             <element signature="n#div#1;n#!!top" expanded="false" />
-            <marker date="1726326322810" expanded="true" signature="1109:1186" placeholder="SELECT taskI... tasks" />
+            <marker date="1726326879835" expanded="true" signature="1109:1186" placeholder="SELECT taskI... tasks" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/TaskManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6642729">
-          <caret line="132" column="24" selection-start-line="132" selection-start-column="24" selection-end-line="132" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.35906643">
+          <caret line="183" column="29" selection-start-line="183" selection-start-column="29" selection-end-line="183" selection-end-column="29" />
           <folding>
-            <marker date="1726326557952" expanded="true" signature="340:388" placeholder="SELECT * FRO... tasks" />
-            <marker date="1726326557952" expanded="true" signature="1282:1466" placeholder="INSERT INTO users... " />
-            <marker date="1726326557952" expanded="true" signature="2662:2757" placeholder="SELECT task_... tasks" />
-            <marker date="1726326557952" expanded="true" signature="3688:3761" placeholder="SELECT * FRO... users" />
-            <marker date="1726326557952" expanded="true" signature="4615:4749" placeholder="UPDATE users... " />
+            <marker date="1726326995842" expanded="true" signature="340:388" placeholder="SELECT * FRO... tasks" />
+            <marker date="1726326995842" expanded="true" signature="1282:1466" placeholder="INSERT INTO users... " />
+            <marker date="1726326995842" expanded="true" signature="2662:2757" placeholder="SELECT task_... tasks" />
+            <marker date="1726326995842" expanded="true" signature="3688:3761" placeholder="SELECT * FRO... users" />
+            <marker date="1726326995842" expanded="true" signature="4615:4749" placeholder="UPDATE users... " />
+            <marker date="1726326995842" expanded="true" signature="5777:5847" placeholder="UPDATE users... " />
+            <marker date="1726326995842" expanded="true" signature="6729:6799" placeholder="UPDATE tasks... " />
           </folding>
         </state>
       </provider>

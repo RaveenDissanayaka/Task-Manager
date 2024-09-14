@@ -130,8 +130,8 @@ include_once('Common/footer.php');
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-            var url = '../backend/TaskManager.php?RequstType=DeleteUser';
-            url += '&user_id=' + encodeURIComponent(id);
+            var url = '../backend/TaskManager.php?RequstType=DeleteTask';
+            url += '&task_id=' + encodeURIComponent(id);
             var htmlobj = $.ajax({url: url, async: false});
 
             if (htmlobj.responseXML.getElementsByTagName("Result")[0].childNodes[0].nodeValue == "TRUE") {
@@ -164,7 +164,7 @@ include_once('Common/footer.php');
             confirmButtonText: "Yes, active it!"
         }).then((result) => {
             if (result.isConfirmed) {
-            var url = '../backend/TaskManager.php?RequstType=ActiveUser';
+            var url = '../backend/TaskManager.php?RequstType=ActiveTask';
             url += '&task_id=' + encodeURIComponent(id);
             var htmlobj = $.ajax({url: url, async: false});
 
