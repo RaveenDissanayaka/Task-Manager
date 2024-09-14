@@ -93,3 +93,58 @@ if (strcmp($RequstType, "GetTask") == 0) {
     $ResponseXML .= "</Validate>";
     echo $ResponseXML;
 }
+if (strcmp($RequstType, "CheckTaskNameWithID") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $task_name = $_GET["task_name"];
+    $task_id = $_GET["task_id"];
+
+    $sql = "SELECT * FROM tasks WHERE task_name = :task_name AND `taskId` != :task_id";
+    $query = $db->prepare($sql);
+    $query->bindParam(':task_id', $task_id, PDO::PARAM_STR);
+    $query->bindParam(':task_name', $task_name, PDO::PARAM_STR);
+    $query->execute();
+    $results = $query->fetchAll(PDO::FETCH_OBJ);
+    if ($query->rowCount() > 0) {
+        $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
+    } else {
+        $ResponseXML .= "<Result><![CDATA[FALSE]]></Result>\n";
+    }
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
+}
+if (strcmp($RequstType, "UpdateTask") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $task_id = $_GET["task_id"];
+    $task_name = $_GET["task_name"];
+    $closing_date = $_GET["closing_date"];
+    $task_description = $_GET["task_description"];
+
+    $sql = "UPDATE tasks SET `task_name`= :task_name,`closing_date`= :closing_date,`task_description`= :task_description WHERE `taskId` = :task_id";
+    $query = $db->prepare($sql);
+    $query->bindParam(':task_name', $task_name, PDO::PARAM_STR);
+    $query->bindParam(':closing_date', $closing_date, PDO::PARAM_STR);
+    $query->bindParam(':task_description', $task_description, PDO::PARAM_STR);
+    $query->bindParam(':task_id', $task_id, PDO::PARAM_INT);
+    $query->execute();
+    if ($query->rowCount() > 0) {
+        $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[Task has been updated]]></Message>\n";
+    } else {
+        $ResponseXML .= "<Result><![CDATA[False]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[Something went wrong.Please try again]]></Message>\n";
+    }
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
+}

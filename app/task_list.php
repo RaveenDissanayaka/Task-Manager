@@ -108,34 +108,17 @@ include_once('Common/footer.php');
         }
     }
     function editRow(id) {
-        $('#userEditModal').modal('show');
-        var url = '../backend/UserManager.php?RequstType=GetUser';
-        url += '&user_id=' + encodeURIComponent(id);
+        $('#taskEditModal').modal('show');
+        var url = '../backend/TaskManager.php?RequstType=GetTask';
+        url += '&task_id=' + encodeURIComponent(id);
         var htmlobj = $.ajax({url: url, async: false});
-        document.getElementById('edit_user_id').value = id;
-        document.getElementById('edit_user_name').value = htmlobj.responseXML.getElementsByTagName("UserName")[0].childNodes[0].nodeValue;
-        document.getElementById('edit_user_email').value = htmlobj.responseXML.getElementsByTagName("UserEmail")[0].childNodes[0].nodeValue;
-        document.getElementById('edit_user_mobile').value = htmlobj.responseXML.getElementsByTagName("UserTelephone")[0].childNodes[0].nodeValue;
+        document.getElementById('edit_task_id').value = id;
+        document.getElementById('edit_task_name').value = htmlobj.responseXML.getElementsByTagName("TaskName")[0].childNodes[0].nodeValue;
+        document.getElementById('edit_closing_date').value = htmlobj.responseXML.getElementsByTagName("ClosingDate")[0].childNodes[0].nodeValue;
+        document.getElementById('edit_task_description').value = htmlobj.responseXML.getElementsByTagName("TaskDascription")[0].childNodes[0].nodeValue;
 
     }
-    function resetRow(id) {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You want to reset user password?",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, reset it!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-            $('#passwordResetModal').modal('show');
-            document.getElementById('password').value = "";
-            document.getElementById('re_password').value = "";
-            document.getElementById('user_id').value = id;
-        }
-    });
-    }
+
     function deleteRow(id) {
         Swal.fire({
             title: "Are you sure?",
@@ -147,7 +130,7 @@ include_once('Common/footer.php');
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-            var url = '../backend/UserManager.php?RequstType=DeleteUser';
+            var url = '../backend/TaskManager.php?RequstType=DeleteUser';
             url += '&user_id=' + encodeURIComponent(id);
             var htmlobj = $.ajax({url: url, async: false});
 
@@ -181,8 +164,8 @@ include_once('Common/footer.php');
             confirmButtonText: "Yes, active it!"
         }).then((result) => {
             if (result.isConfirmed) {
-            var url = '../backend/UserManager.php?RequstType=ActiveUser';
-            url += '&user_id=' + encodeURIComponent(id);
+            var url = '../backend/TaskManager.php?RequstType=ActiveUser';
+            url += '&task_id=' + encodeURIComponent(id);
             var htmlobj = $.ajax({url: url, async: false});
 
             if (htmlobj.responseXML.getElementsByTagName("Result")[0].childNodes[0].nodeValue == "TRUE") {
@@ -204,41 +187,32 @@ include_once('Common/footer.php');
         }
     });
     }
-    function updateUser()
+    function updateTask()
     {
-        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-        if (document.getElementById('edit_user_name').value == "") {
+        if (document.getElementById('edit_task_name').value == "") {
             myNotification({
-                message: 'Name is required.'
+                message: 'Task Name is required.'
             });
-        } else if (document.getElementById('edit_user_mobile').value == "") {
+        } else if (document.getElementById('edit_closing_date').value == "") {
             myNotification({
-                message: 'Mobile No is required.'
+                message: 'Closing Date is required.'
             });
-        } else if (document.getElementById('edit_user_email').value == "") {
-            myNotification({
-                message: 'E mail is required.'
-            });
-        } else if (!document.getElementById('edit_user_email').value.match(validRegex)) {
-            myNotification({
-                message: 'E mail is not valid.'
-            });
-        }else{
-            var urlCUser = '../backend/UserManager.php?RequstType=CheckUserEmailWithID';
-            urlCUser += '&user_id=' + encodeURIComponent(document.getElementById('edit_user_id').value);
-            urlCUser += '&email=' + encodeURIComponent(document.getElementById('edit_user_email').value);
+        }  else{
+            var urlCUser = '../backend/TaskManager.php?RequstType=CheckTaskNameWithID';
+            urlCUser += '&task_id=' + encodeURIComponent(document.getElementById('edit_task_id').value);
+            urlCUser += '&task_name=' + encodeURIComponent(document.getElementById('edit_task_name').value);
             var htmlobjCUser = $.ajax({url: urlCUser, async: false});
             if (htmlobjCUser.responseXML.getElementsByTagName("Result")[0].childNodes[0].nodeValue == "TRUE") {
                 myNotification({
-                    message: 'E-mail already exist.'
+                    message: 'Task Name already exist.'
                 });
             }else{
-                var url = '../backend/UserManager.php?RequstType=UpdateUser';
-                url += '&user_id=' + encodeURIComponent(document.getElementById('edit_user_id').value);
-                url += '&user_name=' + encodeURIComponent(document.getElementById('edit_user_name').value);
-                url += '&user_email=' + encodeURIComponent(document.getElementById('edit_user_email').value);
-                url += '&user_mobile=' + encodeURIComponent(document.getElementById('edit_user_mobile').value);
+                var url = '../backend/TaskManager.php?RequstType=UpdateTask';
+                url += '&task_id=' + encodeURIComponent(document.getElementById('edit_task_id').value);
+                url += '&task_name=' + encodeURIComponent(document.getElementById('edit_task_name').value);
+                url += '&closing_date=' + encodeURIComponent(document.getElementById('edit_closing_date').value);
+                url += '&task_description=' + encodeURIComponent(document.getElementById('edit_task_description').value);
                 var htmlobj = $.ajax({url: url, async: false});
 
                 if (htmlobj.responseXML.getElementsByTagName("Result")[0].childNodes[0].nodeValue == "TRUE") {
@@ -303,35 +277,35 @@ include_once('Common/footer.php');
 </div>
 
 
-<!-- User Edit Modal -->
-<div class="modal fade" id="userEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Task Edit Modal -->
+<div class="modal fade" id="taskEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit User Details</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Task Details</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <input type="hidden" readonly class="form-control" id="edit_user_id" placeholder="Enter Password">
+                <input type="hidden" readonly class="form-control" id="edit_task_id" placeholder="Enter Password">
                 <div class="form-group col-md-12">
-                    <label style="font-size: 14px;" for="user_name">Name : </label>
-                    <input type="text" class="form-control" id="edit_user_name" placeholder="Enter Name">
+                    <label style="font-size: 14px;" for="user_name">Task Name : </label>
+                    <input type="text" class="form-control" id="edit_task_name" placeholder="Enter Task Name">
                 </div>
                 <div class="form-group col-md-12">
-                    <label style="font-size: 14px;" for="user_name">E-mail : </label>
-                    <input type="text" class="form-control" id="edit_user_email" placeholder="Enter E-mail">
+                    <label style="font-size: 14px;" for="user_name">Closing Date : </label>
+                    <input type="date" class="form-control" id="edit_closing_date" placeholder="Enter Closing Date">
                 </div>
                 <div class="form-group col-md-12">
-                    <label style="font-size: 14px;" for="user_name">Mobile No : </label>
-                    <input type="text" class="form-control" id="edit_user_mobile" placeholder="Enter Mobile No" onkeypress="return numbersOnly(event)">
+                    <label style="font-size: 14px;" for="user_name">Task Description : </label>
+                    <input type="text" class="form-control" id="edit_task_description" placeholder="Enter Task Description" >
                 </div>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="updateUser();">Save</button>
+                <button type="button" class="btn btn-primary" onclick="updateTask();">Save</button>
             </div>
         </div>
     </div>
