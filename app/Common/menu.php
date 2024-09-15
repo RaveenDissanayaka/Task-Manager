@@ -273,10 +273,11 @@
                                             <?php
 
                                             $user_id = $_SESSION['userid'];
-                                            $query = $db->prepare("SELECT  name,email,telephone FROM users WHERE (user_id=:user_id)");
+                                            $query = $db->prepare("SELECT  name,email,telephone,user_type FROM users WHERE (user_id=:user_id)");
                                             $query->execute(array(':user_id' => $user_id));
                                             $row = $query->fetch(PDO::FETCH_ASSOC);
                                                 echo $row['name'];
+                                                $userType =  $row['user_type'];
 
                                             ?>
 

@@ -6,6 +6,14 @@ $is_user = 1;
 $is_user_add = 1;
 include_once('Common/menu.php');
 
+if ($userType != 'A') { ?>
+    <script>
+        window.location.href = "employee_dashboard.php";
+    </script>
+    <?php
+
+}
+
 ?>
 <div class="content-page">
     <div class="container-fluid">

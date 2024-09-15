@@ -38,6 +38,7 @@ include_once('../backend/DBManager.php');
 <!-- loader END -->
 
 <?php
+$userType = '';
 $is_dashboard = 0;
 $is_user = 0;
 $is_user_add = 0;
@@ -52,4 +53,5 @@ $is_task_list = 0;
 $is_activity = 0;
 $is_activity_add = 0;
 $is_activity_list = 0;
+$is_employee_dashboard = 0;
 ?>
