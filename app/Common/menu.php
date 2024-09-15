@@ -136,8 +136,8 @@
                                             <i class="las la-minus"></i><span>Activity Add</span>
                                         </a>
                                     </li>
-                                    <li class="">
-                                        <a href="../app/user-list.html">
+                                    <li <?php if ($is_activity_list == 1) { ?>      class="active" <?php } ?>>
+                                        <a href="../app/activity_list.php">
                                             <i class="las la-minus"></i><span>Activity List</span>
                                         </a>
                                     </li>
