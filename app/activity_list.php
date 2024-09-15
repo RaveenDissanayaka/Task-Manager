@@ -106,7 +106,7 @@ include_once('Common/footer.php');
         document.getElementById('activity_name').innerHTML = htmlobj.responseXML.getElementsByTagName("ActivityName")[0].childNodes[0].nodeValue;
         document.getElementById('date_start').innerHTML = htmlobj.responseXML.getElementsByTagName("DateStart")[0].childNodes[0].nodeValue;
         document.getElementById('date_complete').innerHTML = htmlobj.responseXML.getElementsByTagName("DateComplete")[0].childNodes[0].nodeValue;
-       document.getElementById('activity_description').innerHTML = htmlobj.responseXML.getElementsByTagName("ActivityDascription")[0].childNodes[0].nodeValue;
+       document.getElementById('activity_description').innerHTML = htmlobj.responseXML.getElementsByTagName("ActivityDescription")[0].childNodes[0].nodeValue;
         if(htmlobj.responseXML.getElementsByTagName("ActivityStatus")[0].childNodes[0].nodeValue == 1) {
              document.getElementById("active_status").style.display= 'block';
           document.getElementById("delete_status").style.display= 'none';
@@ -117,13 +117,15 @@ include_once('Common/footer.php');
     }
     function editRow(id) {
         $('#taskEditModal').modal('show');
-        var url = '../backend/ActivityManager.php?RequstType=GetTask';
-        url += '&task_id=' + encodeURIComponent(id);
+        var url = '../backend/ActivityManager.php?RequstType=GetActivity';
+        url += '&activity_id=' + encodeURIComponent(id);
         var htmlobj = $.ajax({url: url, async: false});
-        document.getElementById('edit_task_id').value = id;
-        document.getElementById('edit_task_name').value = htmlobj.responseXML.getElementsByTagName("TaskName")[0].childNodes[0].nodeValue;
-        document.getElementById('edit_closing_date').value = htmlobj.responseXML.getElementsByTagName("ClosingDate")[0].childNodes[0].nodeValue;
-        document.getElementById('edit_task_description').value = htmlobj.responseXML.getElementsByTagName("TaskDascription")[0].childNodes[0].nodeValue;
+        document.getElementById('edit_activity_id').value = id;
+        document.getElementById('edit_task_id').value = htmlobj.responseXML.getElementsByTagName("TaskID")[0].childNodes[0].nodeValue;
+        document.getElementById('edit_activity_name').value = htmlobj.responseXML.getElementsByTagName("ActivityName")[0].childNodes[0].nodeValue;
+        document.getElementById('edit_date_start').value = htmlobj.responseXML.getElementsByTagName("DateStart")[0].childNodes[0].nodeValue;
+        document.getElementById('edit_date_complete').value = htmlobj.responseXML.getElementsByTagName("DateComplete")[0].childNodes[0].nodeValue;
+        document.getElementById('edit_activity_description').value = htmlobj.responseXML.getElementsByTagName("ActivityDescription")[0].childNodes[0].nodeValue;
 
     }
 
@@ -138,8 +140,8 @@ include_once('Common/footer.php');
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-            var url = '../backend/ActivityManager.php?RequstType=DeleteTask';
-            url += '&task_id=' + encodeURIComponent(id);
+            var url = '../backend/ActivityManager.php?RequstType=DeleteActivity';
+            url += '&activity_id=' + encodeURIComponent(id);
             var htmlobj = $.ajax({url: url, async: false});
 
             if (htmlobj.responseXML.getElementsByTagName("Result")[0].childNodes[0].nodeValue == "TRUE") {
@@ -172,8 +174,8 @@ include_once('Common/footer.php');
             confirmButtonText: "Yes, active it!"
         }).then((result) => {
             if (result.isConfirmed) {
-            var url = '../backend/ActivityManager.php?RequstType=ActiveTask';
-            url += '&task_id=' + encodeURIComponent(id);
+            var url = '../backend/ActivityManager.php?RequstType=ActiveActivity';
+            url += '&activity_id=' + encodeURIComponent(id);
             var htmlobj = $.ajax({url: url, async: false});
 
             if (htmlobj.responseXML.getElementsByTagName("Result")[0].childNodes[0].nodeValue == "TRUE") {
@@ -195,32 +197,47 @@ include_once('Common/footer.php');
         }
     });
     }
-    function updateTask()
+    function updateActivity()
     {
 
-        if (document.getElementById('edit_task_name').value == "") {
+        if (document.getElementById('edit_task_id').value == "") {
             myNotification({
                 message: 'Task Name is required.'
             });
-        } else if (document.getElementById('edit_closing_date').value == "") {
+        } else if (document.getElementById('edit_activity_name').value == "") {
             myNotification({
-                message: 'Closing Date is required.'
+                message: 'Activity Name is required.'
+            });
+        }else if (document.getElementById('edit_date_start').value == "") {
+            myNotification({
+                message: 'Date Start is required.'
+            });
+        }else if (document.getElementById('edit_date_complete').value == "") {
+            myNotification({
+                message: 'Date Complete is required.'
+            });
+        }else if (document.getElementById('edit_activity_description').value == "") {
+            myNotification({
+                message: 'Activity Description is required.'
             });
         }  else{
-            var urlCUser = '../backend/ActivityManager.php?RequstType=CheckTaskNameWithID';
+            var urlCUser = '../backend/ActivityManager.php?RequstType=CheckActivityNameWithID';
+            urlCUser += '&activity_id=' + encodeURIComponent(document.getElementById('edit_activity_id').value);
             urlCUser += '&task_id=' + encodeURIComponent(document.getElementById('edit_task_id').value);
-            urlCUser += '&task_name=' + encodeURIComponent(document.getElementById('edit_task_name').value);
+            urlCUser += '&activity_name=' + encodeURIComponent(document.getElementById('edit_activity_name').value);
             var htmlobjCUser = $.ajax({url: urlCUser, async: false});
             if (htmlobjCUser.responseXML.getElementsByTagName("Result")[0].childNodes[0].nodeValue == "TRUE") {
                 myNotification({
-                    message: 'Task Name already exist.'
+                    message: 'Activity Name already exist.'
                 });
             }else{
-                var url = '../backend/ActivityManager.php?RequstType=UpdateTask';
+                var url = '../backend/ActivityManager.php?RequstType=UpdateActivity';
+                url += '&activity_id=' + encodeURIComponent(document.getElementById('edit_activity_id').value);
                 url += '&task_id=' + encodeURIComponent(document.getElementById('edit_task_id').value);
-                url += '&task_name=' + encodeURIComponent(document.getElementById('edit_task_name').value);
-                url += '&closing_date=' + encodeURIComponent(document.getElementById('edit_closing_date').value);
-                url += '&task_description=' + encodeURIComponent(document.getElementById('edit_task_description').value);
+                url += '&activity_name=' + encodeURIComponent(document.getElementById('edit_activity_name').value);
+                url += '&date_start=' + encodeURIComponent(document.getElementById('edit_date_start').value);
+                url += '&date_complete=' + encodeURIComponent(document.getElementById('edit_date_complete').value);
+                url += '&activity_description=' + encodeURIComponent(document.getElementById('edit_activity_description').value);
                 var htmlobj = $.ajax({url: url, async: false});
 
                 if (htmlobj.responseXML.getElementsByTagName("Result")[0].childNodes[0].nodeValue == "TRUE") {
@@ -304,24 +321,42 @@ include_once('Common/footer.php');
                 </button>
             </div>
             <div class="modal-body">
-                <input type="hidden" readonly class="form-control" id="edit_task_id" placeholder="Enter Password">
+                <input type="hidden" readonly class="form-control" id="edit_activity_id" placeholder="Enter Password">
                 <div class="form-group col-md-12">
                     <label style="font-size: 14px;" for="user_name">Task Name : </label>
-                    <input type="text" class="form-control" id="edit_task_name" placeholder="Enter Task Name">
+                    <select class="form-control mb-3" id="edit_task_id">
+                        <option value="" selected="">Select Task</option>
+                        <?php
+                        $query = $db->prepare("SELECT taskId,task_name FROM tasks WHERE task_status = '1'");
+                        $query->execute();
+                        while ($row = $query->fetch(PDO::FETCH_ASSOC)) { ?>
+
+                            <option value="<?php echo $row['taskId']; ?>"><?php echo $row['task_name']; ?></option>
+                        <?php }
+                        ?>
+                    </select>
                 </div>
                 <div class="form-group col-md-12">
-                    <label style="font-size: 14px;" for="user_name">Closing Date : </label>
-                    <input type="date" class="form-control" id="edit_closing_date" placeholder="Enter Closing Date">
+                    <label style="font-size: 14px;" for="user_name">Activity Name : </label>
+                    <input type="text" class="form-control" id="edit_activity_name" placeholder="Enter Activity Name">
                 </div>
                 <div class="form-group col-md-12">
-                    <label style="font-size: 14px;" for="user_name">Task Description : </label>
-                    <input type="text" class="form-control" id="edit_task_description" placeholder="Enter Task Description" >
+                    <label style="font-size: 14px;" for="user_name">Date Start : </label>
+                    <input type="date" class="form-control" id="edit_date_start" placeholder="Enter Date Start">
+                </div>
+                <div class="form-group col-md-12">
+                    <label style="font-size: 14px;" for="user_name">Date Complete : </label>
+                    <input type="date" class="form-control" id="edit_date_complete" placeholder="Enter Date Complete">
+                </div>
+                <div class="form-group col-md-12">
+                    <label style="font-size: 14px;" for="user_name">Activity Description : </label>
+                    <input type="text" class="form-control" id="edit_activity_description" placeholder="Enter Activity Description" >
                 </div>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="updateTask();">Save</button>
+                <button type="button" class="btn btn-primary" onclick="updateActivity();">Save</button>
             </div>
         </div>
     </div>
