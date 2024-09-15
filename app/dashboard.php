@@ -19,7 +19,7 @@ include_once('Common/menu.php');
                         </div>
                         <h3><span class="counter">35000</span></h3>
                         <div class="d-flex align-items-center justify-content-between mt-1">
-                            <p class="mb-0">Total Revenue</p>
+                            <p class="mb-0">Total Users</p>
                             <span class="text-primary">65%</span>
                         </div>
                         <div class="iq-progress-bar bg-primary-light mt-2">
@@ -37,7 +37,7 @@ include_once('Common/menu.php');
                         </div>
                         <h3><span class="counter">25100</span></h3>
                         <div class="d-flex align-items-center justify-content-between mt-1">
-                            <p class="mb-0">Total Revenue</p>
+                            <p class="mb-0">Total Employees</p>
                             <span class="text-warning">35%</span>
                         </div>
                         <div class="iq-progress-bar bg-warning-light mt-2">
@@ -55,7 +55,7 @@ include_once('Common/menu.php');
                         </div>
                         <h3><span class="counter">33000</span></h3>
                         <div class="d-flex align-items-center justify-content-between mt-1">
-                            <p class="mb-0">Total Revenue</p>
+                            <p class="mb-0">Total Tasks</p>
                             <span class="text-success">85%</span>
                         </div>
                         <div class="iq-progress-bar bg-success-light mt-2">
@@ -73,7 +73,7 @@ include_once('Common/menu.php');
                         </div>
                         <h3><span class="counter">2500</span></h3>
                         <div class="d-flex align-items-center justify-content-between mt-1">
-                            <p class="mb-0">Total Revenue</p>
+                            <p class="mb-0">Total Activities</p>
                             <span class="text-info">55%</span>
                         </div>
                         <div class="iq-progress-bar bg-info-light mt-2">
