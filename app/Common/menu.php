@@ -107,11 +107,11 @@
                                             <i class="las la-minus"></i><span>Task List</span>
                                         </a>
                                     </li>
-<!--                                    <li class="">-->
-<!--                                        <a href="../app/user-list.html">-->
-<!--                                            <i class="las la-minus"></i><span>Task Assign</span>-->
-<!--                                        </a>-->
-<!--                                    </li>-->
+                                   <li class="">
+                                       <a href="../app/user-list.html">
+                                          <i class="las la-minus"></i><span>Task Assign</span>
+                                     </a>
+                                 </li>
                                 </ul>
                             </li>
                             <li <?php if ($is_activity == 1) { ?>      class="active" <?php } ?>>
@@ -141,11 +141,7 @@
                                             <i class="las la-minus"></i><span>Activity List</span>
                                         </a>
                                     </li>
-                                    <li class="">
-                                        <a href="../app/user-list.html">
-                                            <i class="las la-minus"></i><span>Activity Allocate</span>
-                                        </a>
-                                    </li>
+
                                 </ul>
                             </li>
                             <li <?php if ($is_profile == 1) { ?>      class="active" <?php } ?> >

@@ -74,3 +74,32 @@ if (strcmp($RequstType, "SaveNewActivity") == 0) {
     $ResponseXML .= "</Validate>";
     echo $ResponseXML;
 }
+if (strcmp($RequstType, "GetActivity") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $activity_id = $_GET["activity_id"];
+
+
+    $sql = "SELECT tasks.task_name,activities.activity_name,activities.activity_description,activities.date_start,activities.date_complete, activities.activity_status
+FROM activities
+ INNER JOIN tasks ON tasks.taskId = activities.taskId WHERE activities.`taskId` = :activity_id";
+    $query = $db->prepare($sql);
+    $query->bindParam(':activity_id', $activity_id, PDO::PARAM_INT);
+    $query->execute();
+    $row = $query->fetch(PDO::FETCH_ASSOC);
+    if ($query->rowCount() > 0) {
+        $ResponseXML .= "<TaskName><![CDATA[".$row['task_name']."]]></TaskName>\n";
+        $ResponseXML .= "<ActivityName><![CDATA[".$row['activity_name']."]]></ActivityName>\n";
+        $ResponseXML .= "<DateStart><![CDATA[".$row['date_start']."]]></DateStart>\n";
+        $ResponseXML .= "<DateComplete><![CDATA[".$row['date_complete']."]]></DateComplete>\n";
+        $ResponseXML .= "<ActivityDascription><![CDATA[".$row['activity_description']."]]></ActivityDascription>\n";
+        $ResponseXML .= "<ActivityStatus><![CDATA[".$row['activity_status']."]]></ActivityStatus>\n";
+    }
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
+}

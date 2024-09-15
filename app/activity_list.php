@@ -98,14 +98,16 @@ include_once('Common/footer.php');
 ?>
 <script type="text/javascript">
     function viewRow(id) {
-        $('#taskViewModal').modal('show');
-        var url = '../backend/TaskManager.php?RequstType=GetTask';
-        url += '&task_id=' + encodeURIComponent(id);
+        $('#activityViewModal').modal('show');
+        var url = '../backend/ActivityManager.php?RequstType=GetActivity';
+        url += '&activity_id=' + encodeURIComponent(id);
         var htmlobj = $.ajax({url: url, async: false});
         document.getElementById('task_name').innerHTML = htmlobj.responseXML.getElementsByTagName("TaskName")[0].childNodes[0].nodeValue;
-        document.getElementById('closing_date').innerHTML = htmlobj.responseXML.getElementsByTagName("ClosingDate")[0].childNodes[0].nodeValue;
-        document.getElementById('task_description').innerHTML = htmlobj.responseXML.getElementsByTagName("TaskDascription")[0].childNodes[0].nodeValue;
-        if(htmlobj.responseXML.getElementsByTagName("TaskStatus")[0].childNodes[0].nodeValue == 1) {
+        document.getElementById('activity_name').innerHTML = htmlobj.responseXML.getElementsByTagName("ActivityName")[0].childNodes[0].nodeValue;
+        document.getElementById('date_start').innerHTML = htmlobj.responseXML.getElementsByTagName("DateStart")[0].childNodes[0].nodeValue;
+        document.getElementById('date_complete').innerHTML = htmlobj.responseXML.getElementsByTagName("DateComplete")[0].childNodes[0].nodeValue;
+       document.getElementById('activity_description').innerHTML = htmlobj.responseXML.getElementsByTagName("ActivityDascription")[0].childNodes[0].nodeValue;
+        if(htmlobj.responseXML.getElementsByTagName("ActivityStatus")[0].childNodes[0].nodeValue == 1) {
              document.getElementById("active_status").style.display= 'block';
           document.getElementById("delete_status").style.display= 'none';
         }else{
@@ -115,7 +117,7 @@ include_once('Common/footer.php');
     }
     function editRow(id) {
         $('#taskEditModal').modal('show');
-        var url = '../backend/TaskManager.php?RequstType=GetTask';
+        var url = '../backend/ActivityManager.php?RequstType=GetTask';
         url += '&task_id=' + encodeURIComponent(id);
         var htmlobj = $.ajax({url: url, async: false});
         document.getElementById('edit_task_id').value = id;
@@ -136,7 +138,7 @@ include_once('Common/footer.php');
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-            var url = '../backend/TaskManager.php?RequstType=DeleteTask';
+            var url = '../backend/ActivityManager.php?RequstType=DeleteTask';
             url += '&task_id=' + encodeURIComponent(id);
             var htmlobj = $.ajax({url: url, async: false});
 
@@ -170,7 +172,7 @@ include_once('Common/footer.php');
             confirmButtonText: "Yes, active it!"
         }).then((result) => {
             if (result.isConfirmed) {
-            var url = '../backend/TaskManager.php?RequstType=ActiveTask';
+            var url = '../backend/ActivityManager.php?RequstType=ActiveTask';
             url += '&task_id=' + encodeURIComponent(id);
             var htmlobj = $.ajax({url: url, async: false});
 
@@ -205,7 +207,7 @@ include_once('Common/footer.php');
                 message: 'Closing Date is required.'
             });
         }  else{
-            var urlCUser = '../backend/TaskManager.php?RequstType=CheckTaskNameWithID';
+            var urlCUser = '../backend/ActivityManager.php?RequstType=CheckTaskNameWithID';
             urlCUser += '&task_id=' + encodeURIComponent(document.getElementById('edit_task_id').value);
             urlCUser += '&task_name=' + encodeURIComponent(document.getElementById('edit_task_name').value);
             var htmlobjCUser = $.ajax({url: urlCUser, async: false});
@@ -214,7 +216,7 @@ include_once('Common/footer.php');
                     message: 'Task Name already exist.'
                 });
             }else{
-                var url = '../backend/TaskManager.php?RequstType=UpdateTask';
+                var url = '../backend/ActivityManager.php?RequstType=UpdateTask';
                 url += '&task_id=' + encodeURIComponent(document.getElementById('edit_task_id').value);
                 url += '&task_name=' + encodeURIComponent(document.getElementById('edit_task_name').value);
                 url += '&closing_date=' + encodeURIComponent(document.getElementById('edit_closing_date').value);
@@ -246,12 +248,12 @@ include_once('Common/footer.php');
 </script>
 
 
-<!-- Task View Modal -->
-<div class="modal fade" id="taskViewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Activity  View Modal -->
+<div class="modal fade" id="activityViewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">View Task Details</h5>
+                <h5 class="modal-title" id="exampleModalLabel">View Activity  Details</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -262,12 +264,20 @@ include_once('Common/footer.php');
                     <b><label id="task_name"></label></b>
                 </div>
                 <div class="form-group col-md-12">
-                    <label style="font-size: 14px;" for="user_name">Closing Date : </label>
-                    <b><label id="closing_date"></label></b>
+                    <label style="font-size: 14px;" for="user_name">Activity Name : </label>
+                    <b><label id="activity_name"></label></b>
                 </div>
                 <div class="form-group col-md-12">
-                    <label style="font-size: 14px;" for="user_name">Task Description : </label>
-                    <b><label id="task_description"></label></b>
+                    <label style="font-size: 14px;" for="user_name">Date Start : </label>
+                    <b><label id="date_start"></label></b>
+                </div>
+                <div class="form-group col-md-12">
+                    <label style="font-size: 14px;" for="user_name">Date Complete : </label>
+                    <b><label id="date_complete"></label></b>
+                </div>
+                <div class="form-group col-md-12">
+                    <label style="font-size: 14px;" for="user_name">Activity Description : </label>
+                    <b><label id="activity_description"></label></b>
                 </div>
                 <div class="form-group col-md-12">
                     <label style="font-size: 14px;" for="user_name">Status : </label>
@@ -283,12 +293,12 @@ include_once('Common/footer.php');
 </div>
 
 
-<!-- Task Edit Modal -->
+<!-- Activity  Edit Modal -->
 <div class="modal fade" id="taskEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Task Details</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Activity  Details</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
