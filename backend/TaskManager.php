@@ -157,18 +157,30 @@ if (strcmp($RequstType, "DeleteTask") == 0) {
 
     $task_id = $_GET["task_id"];
     $task_status = '0';
+    $activity_status = '1';
 
-    $sql = "UPDATE tasks SET `task_status`= :task_status WHERE `taskId` = :task_id";
-    $query = $db->prepare($sql);
-    $query->bindParam(':task_status', $task_status, PDO::PARAM_STR);
-    $query->bindParam(':task_id', $task_id, PDO::PARAM_INT);
-    $query->execute();
-    if ($query->rowCount() > 0) {
-        $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
-        $ResponseXML .= "<Message><![CDATA[Task has been deleted]]></Message>\n";
-    } else {
+    $sqlActivity = "SELECT * FROM activities WHERE activity_status = :activity_status AND `taskId` = :task_id";
+    $queryActivity = $db->prepare($sqlActivity);
+    $queryActivity->bindParam(':task_id', $task_id, PDO::PARAM_INT);
+    $queryActivity->bindParam(':activity_status', $activity_status, PDO::PARAM_INT);
+    $queryActivity->execute();
+    if ($queryActivity->rowCount() > 0) {
         $ResponseXML .= "<Result><![CDATA[False]]></Result>\n";
-        $ResponseXML .= "<Message><![CDATA[Something went wrong.Please try again]]></Message>\n";
+        $ResponseXML .= "<Message><![CDATA[Can not delete. Active activities available]]></Message>\n";
+    }else {
+
+        $sql = "UPDATE tasks SET `task_status`= :task_status WHERE `taskId` = :task_id";
+        $query = $db->prepare($sql);
+        $query->bindParam(':task_status', $task_status, PDO::PARAM_STR);
+        $query->bindParam(':task_id', $task_id, PDO::PARAM_INT);
+        $query->execute();
+        if ($query->rowCount() > 0) {
+            $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
+            $ResponseXML .= "<Message><![CDATA[Task has been deleted]]></Message>\n";
+        } else {
+            $ResponseXML .= "<Result><![CDATA[False]]></Result>\n";
+            $ResponseXML .= "<Message><![CDATA[Something went wrong.Please try again]]></Message>\n";
+        }
     }
 
     $ResponseXML .= "</Validate>";
