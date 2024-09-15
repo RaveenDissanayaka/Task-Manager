@@ -166,3 +166,56 @@ WHERE `activityId` = :activity_id";
     $ResponseXML .= "</Validate>";
     echo $ResponseXML;
 }
+if (strcmp($RequstType, "DeleteActivity") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $activity_id = $_GET["activity_id"];
+    $activity_status = '0';
+
+        $sql = "UPDATE activities SET `activity_status`= :activity_status WHERE `activityId` = :activity_id";
+        $query = $db->prepare($sql);
+        $query->bindParam(':activity_status', $activity_status, PDO::PARAM_STR);
+        $query->bindParam(':activity_id', $activity_id, PDO::PARAM_INT);
+        $query->execute();
+        if ($query->rowCount() > 0) {
+            $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
+            $ResponseXML .= "<Message><![CDATA[Activity has been deleted]]></Message>\n";
+        } else {
+            $ResponseXML .= "<Result><![CDATA[False]]></Result>\n";
+            $ResponseXML .= "<Message><![CDATA[Something went wrong.Please try again]]></Message>\n";
+        }
+
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
+}
+if (strcmp($RequstType, "ActiveActivity") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $activity_id = $_GET["activity_id"];
+    $activity_status = '1';
+
+    $sql = "UPDATE activities SET `activity_status`= :activity_status WHERE `activityId` = :activity_id";
+    $query = $db->prepare($sql);
+    $query->bindParam(':activity_status', $activity_status, PDO::PARAM_STR);
+    $query->bindParam(':activity_id', $activity_id, PDO::PARAM_INT);
+    $query->execute();
+    if ($query->rowCount() > 0) {
+        $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[Activity has been activated]]></Message>\n";
+    } else {
+        $ResponseXML .= "<Result><![CDATA[False]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[Something went wrong.Please try again]]></Message>\n";
+    }
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
+}
