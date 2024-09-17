@@ -212,3 +212,28 @@ if (strcmp($RequstType, "ActiveTask") == 0) {
     $ResponseXML .= "</Validate>";
     echo $ResponseXML;
 }
+if (strcmp($RequstType, "AssignTask") == 0) {
+    $employee_id = $_GET["employee_id"];
+    $task_id = $_GET["task_id"];
+    $activity_status = 1;
+
+    $sqlActivity = "SELECT * FROM activities WHERE activity_status = :activity_status AND `taskId` = :task_id";
+    $queryActivity = $db->prepare($sqlActivity);
+    $queryActivity->bindParam(':task_id', $task_id, PDO::PARAM_INT);
+    $queryActivity->bindParam(':activity_status', $activity_status, PDO::PARAM_INT);
+    $queryActivity->execute();
+    while ($row = $queryActivity->fetch(PDO::FETCH_ASSOC)) {
+
+        $activity_id = $row["activityId"];
+        $user_task_status = 0;
+
+        $sql = "INSERT INTO user_has_tasks(user_id,taskId,activityId,user_task_status) VALUES(:employee_id,:task_id,:activity_id,:user_task_status)";
+        $query = $db->prepare($sql);
+        $query->bindParam(':employee_id', $employee_id, PDO::PARAM_INT);
+        $query->bindParam(':task_id', $task_id, PDO::PARAM_INT);
+        $query->bindParam(':activity_id', $activity_id, PDO::PARAM_INT);
+        $query->bindParam(':user_task_status', $user_task_status, PDO::PARAM_INT);
+        $query->execute();
+
+    }
+}

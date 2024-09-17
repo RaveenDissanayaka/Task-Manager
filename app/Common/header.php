@@ -54,4 +54,5 @@ $is_activity = 0;
 $is_activity_add = 0;
 $is_activity_list = 0;
 $is_employee_dashboard = 0;
+$is_task_assign = 0;
 ?>

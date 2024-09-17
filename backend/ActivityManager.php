@@ -219,3 +219,28 @@ if (strcmp($RequstType, "ActiveActivity") == 0) {
     $ResponseXML .= "</Validate>";
     echo $ResponseXML;
 }
+if (strcmp($RequstType, "GetActivityList") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $task_id = $_GET["task_id"];
+    $activity_status = '1';
+
+    $tableResult = '';
+
+    $sql = "UPDATE tasks SET `task_status`= :task_status WHERE `taskId` = :task_id";
+    $query = $db->prepare($sql);
+    $query->bindParam(':activity_status', $activity_status, PDO::PARAM_STR);
+    $query->bindParam(':task_id', $task_id, PDO::PARAM_INT);
+    $query->execute();
+    if ($query->rowCount() > 0) {
+        $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
+
+    }
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
+}

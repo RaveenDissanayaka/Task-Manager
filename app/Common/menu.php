@@ -1,6 +1,15 @@
 <!-- Wrapper Start -->
 <div class="wrapper">
+    <?php
 
+    $user_id = $_SESSION['userid'];
+    $query = $db->prepare("SELECT  name,email,telephone,user_type FROM users WHERE (user_id=:user_id)");
+    $query->execute(array(':user_id' => $user_id));
+    $row = $query->fetch(PDO::FETCH_ASSOC);
+
+    $userType =  $row['user_type'];
+
+    ?>
     <div class="iq-sidebar  sidebar-default ">
         <div class="iq-sidebar-logo d-flex align-items-center">
             <a href="../app/dashboard.php" class="header-logo">
@@ -19,6 +28,8 @@
                     <li class="">
 
                         <ul id="otherpage" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                            <?php if ($userType == 'A') { ?>
+
                             <li <?php if ($is_dashboard == 1) { ?>      class="active" <?php } ?> >
                                 <a href="../app/dashboard.php" class="svg-icon">
                                     <svg class="svg-icon" width="25" height="25" xmlns="http://www.w3.org/2000/svg"
@@ -107,11 +118,11 @@
                                             <i class="las la-minus"></i><span>Task List</span>
                                         </a>
                                     </li>
-                                   <li class="">
-                                       <a href="../app/user-list.html">
-                                          <i class="las la-minus"></i><span>Task Assign</span>
-                                     </a>
-                                 </li>
+<!--                                   <li class="">-->
+<!--                                       <a href="../app/user-list.html">-->
+<!--                                          <i class="las la-minus"></i><span>Task Assign</span>-->
+<!--                                     </a>-->
+<!--                                 </li>-->
                                 </ul>
                             </li>
                             <li <?php if ($is_activity == 1) { ?>      class="active" <?php } ?>>
@@ -144,6 +155,28 @@
 
                                 </ul>
                             </li>
+                            <li <?php if ($is_task_assign == 1) { ?>      class="active" <?php } ?> >
+                                <a href="../app/task_assign.php" class="svg-icon">
+                                    <svg class="svg-icon" id="p-dash11" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                    </svg>
+                                    <span class="ml-4">Task Assign  </span>
+                                </a>
+                            </li>
+                            <?php }
+                             if ($userType == 'E') { ?>
+                                 <li <?php if ($is_employee_dashboard == 1) { ?>      class="active" <?php } ?> >
+                                     <a href="../app/employee_dashboard.php" class="svg-icon">
+                                         <svg class="svg-icon" width="25" height="25" xmlns="http://www.w3.org/2000/svg"
+                                              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                              stroke-linecap="round" stroke-linejoin="round">
+                                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                         </svg>
+                                         <span class="ml-4">Dashboard  </span>
+                                     </a>
+                                 </li>
+                             <?php } ?>
                             <li <?php if ($is_profile == 1) { ?>      class="active" <?php } ?> >
                                 <a href="../app/user_profile.php" class="svg-icon">
                                     <svg class="svg-icon" id="p-dash10" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -205,54 +238,23 @@
                                                 </div>
                                             </div>
                                             <div class="px-3 pt-0 pb-0 sub-card">
-                                                <a href="#" class="iq-sub-card">
-                                                    <div class="media align-items-center cust-card py-3 border-bottom">
-                                                        <div class="">
-                                                            <img class="avatar-50 rounded-small"
-                                                                 src="../assets/images/user/01.jpg" alt="01">
-                                                        </div>
-                                                        <div class="media-body ml-3">
-                                                            <div
-                                                                class="d-flex align-items-center justify-content-between">
-                                                                <h6 class="mb-0">Emma Watson</h6>
-                                                                <small class="text-dark"><b>12 : 47 pm</b></small>
-                                                            </div>
-                                                            <small class="mb-0">Lorem ipsum dolor sit amet</small>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                                <a href="#" class="iq-sub-card">
-                                                    <div class="media align-items-center cust-card py-3 border-bottom">
-                                                        <div class="">
-                                                            <img class="avatar-50 rounded-small"
-                                                                 src="../assets/images/user/02.jpg" alt="02">
-                                                        </div>
-                                                        <div class="media-body ml-3">
-                                                            <div
-                                                                class="d-flex align-items-center justify-content-between">
-                                                                <h6 class="mb-0">Ashlynn Franci</h6>
-                                                                <small class="text-dark"><b>11 : 30 pm</b></small>
-                                                            </div>
-                                                            <small class="mb-0">Lorem ipsum dolor sit amet</small>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                                <a href="#" class="iq-sub-card">
-                                                    <div class="media align-items-center cust-card py-3">
-                                                        <div class="">
-                                                            <img class="avatar-50 rounded-small"
-                                                                 src="../assets/images/user/03.jpg" alt="03">
-                                                        </div>
-                                                        <div class="media-body ml-3">
-                                                            <div
-                                                                class="d-flex align-items-center justify-content-between">
-                                                                <h6 class="mb-0">Kianna Carder</h6>
-                                                                <small class="text-dark"><b>11 : 21 pm</b></small>
-                                                            </div>
-                                                            <small class="mb-0">Lorem ipsum dolor sit amet</small>
-                                                        </div>
-                                                    </div>
-                                                </a>
+<!--                                                <a href="#" class="iq-sub-card">-->
+<!--                                                    <div class="media align-items-center cust-card py-3 border-bottom">-->
+<!--                                                        <div class="">-->
+<!--                                                            <img class="avatar-50 rounded-small"-->
+<!--                                                                 src="../assets/images/user/01.jpg" alt="01">-->
+<!--                                                        </div>-->
+<!--                                                        <div class="media-body ml-3">-->
+<!--                                                            <div-->
+<!--                                                                class="d-flex align-items-center justify-content-between">-->
+<!--                                                                <h6 class="mb-0">Emma Watson</h6>-->
+<!--                                                                <small class="text-dark"><b>12 : 47 pm</b></small>-->
+<!--                                                            </div>-->
+<!--                                                            <small class="mb-0">Lorem ipsum dolor sit amet</small>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                </a>-->
+
                                             </div>
                                             <a class="right-ic btn btn-primary btn-block position-relative p-2" href="#"
                                                role="button">
@@ -270,16 +272,9 @@
                                          alt="user">
                                     <div class="caption ml-3">
                                         <h6 class="mb-0 line-height">
-                                            <?php
-
-                                            $user_id = $_SESSION['userid'];
-                                            $query = $db->prepare("SELECT  name,email,telephone,user_type FROM users WHERE (user_id=:user_id)");
-                                            $query->execute(array(':user_id' => $user_id));
-                                            $row = $query->fetch(PDO::FETCH_ASSOC);
-                                                echo $row['name'];
-                                                $userType =  $row['user_type'];
-
-                                            ?>
+                                           <?php
+                                           echo $row['name'];
+                                           ?>
 
                                             <i class="las la-angle-down ml-2"></i></h6>
                                     </div>
