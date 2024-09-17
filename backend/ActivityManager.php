@@ -244,3 +244,29 @@ if (strcmp($RequstType, "GetActivityList") == 0) {
     $ResponseXML .= "</Validate>";
     echo $ResponseXML;
 }
+if (strcmp($RequstType, "ChangeStatus") == 0) {
+    header('Content-Type: text/xml');
+    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+
+    $ResponseXML = "";
+    $ResponseXML .= "<Validate>\n";
+
+    $activity_id = $_GET["activity_id"];
+    $activity_status = $_GET["activity_status"];
+
+    $sql = "UPDATE user_has_tasks SET `user_task_status`= :activity_status WHERE `user_task_id` = :activity_id";
+    $query = $db->prepare($sql);
+    $query->bindParam(':activity_status', $activity_status, PDO::PARAM_STR);
+    $query->bindParam(':activity_id', $activity_id, PDO::PARAM_INT);
+    $query->execute();
+    if ($query->rowCount() > 0) {
+        $ResponseXML .= "<Result><![CDATA[TRUE]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[Status has been chnaged]]></Message>\n";
+    } else {
+        $ResponseXML .= "<Result><![CDATA[False]]></Result>\n";
+        $ResponseXML .= "<Message><![CDATA[Something went wrong.Please try again]]></Message>\n";
+    }
+
+    $ResponseXML .= "</Validate>";
+    echo $ResponseXML;
+}
