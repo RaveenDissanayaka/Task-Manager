@@ -14,6 +14,7 @@ if ($userType != 'A') { ?>
 
 }
 
+
 ?>
 <div class="content-page">
     <div class="container-fluid">
