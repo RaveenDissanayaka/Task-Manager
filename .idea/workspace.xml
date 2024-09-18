@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="128d5c0d-8b23-46c3-9c21-b38e6f3bec8d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/employee_task.php" afterPath="$PROJECT_DIR$/app/employee_task.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard.php" afterPath="$PROJECT_DIR$/app/dashboard.php" />
     </list>
     <ignored path="Task Manager.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,73 +24,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="menu.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Common/menu.php">
+      <file leaf-file-name="dashboard.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/dashboard.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="12" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.38958707">
+              <caret line="100" column="75" selection-start-line="100" selection-start-column="75" selection-end-line="100" selection-end-column="75" />
               <folding>
-                <marker date="1726582432540" expanded="true" signature="119:193" placeholder="SELECT name,... users" />
+                <marker date="1726651378618" expanded="true" signature="274:319" placeholder="SELECT COUNT... user_has_tasks" />
+                <marker date="1726651378618" expanded="true" signature="274:341" placeholder="SELECT COUNT... users" />
+                <marker date="1726651378618" expanded="true" signature="481:552" placeholder="SELECT COUNT... users" />
+                <marker date="1726651378618" expanded="true" signature="704:748" placeholder="SELECT COUNT... tasks" />
+                <marker date="1726651378618" expanded="true" signature="890:947" placeholder="SELECT COUNT... activities" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="employee_task.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/employee_task.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="5.701975">
-              <caret line="229" column="34" selection-start-line="229" selection-start-column="34" selection-end-line="229" selection-end-column="34" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <marker date="1726650657830" expanded="true" signature="646:809" placeholder="SELECT H.tas... user_has_tasks" />
-                <marker date="1726650657830" expanded="true" signature="969:1104" placeholder="SELECT COUNT... user_has_tasks" />
-                <marker date="1726650657830" expanded="true" signature="1323:1492" placeholder="SELECT COUNT... user_has_tasks" />
-                <marker date="1726650657830" expanded="true" signature="2896:3057" placeholder="..." />
-                <marker date="1726650657830" expanded="true" signature="3693:3891" placeholder="SELECT H.tas... user_has_tasks" />
-                <marker date="1726650657830" expanded="true" signature="3693:3915" placeholder="SELECT H.tas... user_has_tasks" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActivityManager.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/ActivityManager.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.115385">
-              <caret line="261" column="26" selection-start-line="261" selection-start-column="8" selection-end-line="261" selection-end-column="26" />
-              <folding>
-                <marker date="1726595145606" expanded="true" signature="385:468" placeholder="SELECT * FRO... activities" />
-                <marker date="1726595145606" expanded="true" signature="1529:1783" placeholder="INSERT INTO activities... " />
-                <marker date="1726595145606" expanded="true" signature="3149:3436" placeholder="SELECT task_... tasks" />
-                <marker date="1726595145606" expanded="true" signature="4715:4800" placeholder="SELECT * FRO... tasks" />
-                <marker date="1726595145606" expanded="true" signature="4715:4833" placeholder="SELECT * FRO... activities" />
-                <marker date="1726595145606" expanded="true" signature="5866:6078" placeholder="UPDATE tasks... " />
-                <marker date="1726595145606" expanded="true" signature="7284:7375" placeholder="UPDATE activ... " />
-                <marker date="1726595145606" expanded="true" signature="8338:8429" placeholder="UPDATE activ... " />
-                <marker date="1726595145606" expanded="true" signature="9366:9436" placeholder="UPDATE tasks... " />
-                <marker date="1726595145606" expanded="true" signature="10105:10203" placeholder="UPDATE user_... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="employee_dashboard.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/employee_dashboard.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Common/header.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -123,7 +67,6 @@
         <option value="$PROJECT_DIR$/app/user_add.php" />
         <option value="$PROJECT_DIR$/app/activity_add.php" />
         <option value="$PROJECT_DIR$/app/activity_list.php" />
-        <option value="$PROJECT_DIR$/app/dashboard.php" />
         <option value="$PROJECT_DIR$/app/employee_add.php" />
         <option value="$PROJECT_DIR$/app/employee_list.php" />
         <option value="$PROJECT_DIR$/app/task_add.php" />
@@ -133,6 +76,7 @@
         <option value="$PROJECT_DIR$/app/employee_dashboard.php" />
         <option value="$PROJECT_DIR$/backend/ActivityManager.php" />
         <option value="$PROJECT_DIR$/app/employee_task.php" />
+        <option value="$PROJECT_DIR$/app/dashboard.php" />
       </list>
     </option>
   </component>
@@ -613,13 +557,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/dashboard.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5">
-          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/employee_add.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.153846">
@@ -628,13 +565,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/task_add.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42728904">
-          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/task_list.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.42728904">
           <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
@@ -657,7 +587,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/employee_dashboard.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.3967684">
           <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
           <folding />
         </state>
@@ -665,7 +595,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Common/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="1.7396768">
           <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
           <folding />
         </state>
@@ -709,7 +639,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/ActivityManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.115385">
+        <state vertical-scroll-proportion="0.84560144">
           <caret line="261" column="26" selection-start-line="261" selection-start-column="8" selection-end-line="261" selection-end-column="26" />
           <folding>
             <marker date="1726595145606" expanded="true" signature="385:468" placeholder="SELECT * FRO... activities" />
@@ -728,16 +658,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/employee_task.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.701975">
-          <caret line="229" column="34" selection-start-line="229" selection-start-column="34" selection-end-line="229" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.2118492">
+          <caret line="33" column="22" selection-start-line="32" selection-start-column="20" selection-end-line="36" selection-end-column="52" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <marker date="1726650657830" expanded="true" signature="646:809" placeholder="SELECT H.tas... user_has_tasks" />
             <marker date="1726650657830" expanded="true" signature="969:1104" placeholder="SELECT COUNT... user_has_tasks" />
             <marker date="1726650657830" expanded="true" signature="1323:1492" placeholder="SELECT COUNT... user_has_tasks" />
-            <marker date="1726650657830" expanded="true" signature="2896:3057" placeholder="..." />
-            <marker date="1726650657830" expanded="true" signature="3693:3891" placeholder="SELECT H.tas... user_has_tasks" />
-            <marker date="1726650657830" expanded="true" signature="3693:3915" placeholder="SELECT H.tas... user_has_tasks" />
+            <marker date="1726650657830" expanded="true" signature="3693:3915" placeholder="SELECT H.use... user_has_tasks" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/task_list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.70197487">
+          <caret line="65" column="93" selection-start-line="65" selection-start-column="64" selection-end-line="65" selection-end-column="93" />
+          <folding>
+            <marker date="1726589290002" expanded="true" signature="1233:1310" placeholder="SELECT taskI... tasks" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/dashboard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38958707">
+          <caret line="100" column="75" selection-start-line="100" selection-start-column="75" selection-end-line="100" selection-end-column="75" />
+          <folding>
+            <marker date="1726651378618" expanded="true" signature="274:319" placeholder="SELECT COUNT... user_has_tasks" />
+            <marker date="1726651378618" expanded="true" signature="274:341" placeholder="SELECT COUNT... users" />
+            <marker date="1726651378618" expanded="true" signature="481:552" placeholder="SELECT COUNT... users" />
+            <marker date="1726651378618" expanded="true" signature="704:748" placeholder="SELECT COUNT... tasks" />
+            <marker date="1726651378618" expanded="true" signature="890:947" placeholder="SELECT COUNT... activities" />
           </folding>
         </state>
       </provider>

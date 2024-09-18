@@ -12,6 +12,26 @@ if ($userType != 'A') { ?>
     <?php
 
 }
+
+$queryUsers = $db->prepare("SELECT COUNT(user_id) AS userCount FROM users WHERE user_type = 'A'");
+$queryUsers->execute();
+$rowU = $queryUsers->fetch(PDO::FETCH_ASSOC);
+$userCount = $rowU['userCount'];
+
+$queryEmployees = $db->prepare("SELECT COUNT(user_id) AS employeeCount FROM users WHERE user_type = 'E'");
+$queryEmployees->execute();
+$rowE = $queryEmployees->fetch(PDO::FETCH_ASSOC);
+$employeeCount = $rowE['employeeCount'];
+
+$queryTasks = $db->prepare("SELECT COUNT(taskId) AS taskCount FROM tasks ");
+$queryTasks->execute();
+$rowT = $queryTasks->fetch(PDO::FETCH_ASSOC);
+$taskCount = $rowT['taskCount'];
+
+$queryActivities = $db->prepare("SELECT COUNT(activityId) AS activityCount FROM activities ");
+$queryActivities->execute();
+$rowA = $queryActivities->fetch(PDO::FETCH_ASSOC);
+$activityCount = $rowA['activityCount'];
 ?>
 <div class="content-page">
     <div class="container-fluid">
@@ -24,13 +44,13 @@ if ($userType != 'A') { ?>
                             <h5>User</h5>
                             <span class="badge badge-primary">All</span>
                         </div>
-                        <h3><span class="counter">35000</span></h3>
+                        <h3><span class="counter"><?php echo $userCount; ?></span></h3>
                         <div class="d-flex align-items-center justify-content-between mt-1">
                             <p class="mb-0">Total Users</p>
-                            <span class="text-primary">65%</span>
+                            <span class="text-primary">100%</span>
                         </div>
                         <div class="iq-progress-bar bg-primary-light mt-2">
-                            <span class="bg-primary iq-progress progress-1" data-percent="65"></span>
+                            <span class="bg-primary iq-progress progress-1" data-percent="100"></span>
                         </div>
                     </div>
                 </div>
@@ -42,13 +62,13 @@ if ($userType != 'A') { ?>
                             <h5>Employee</h5>
                             <span class="badge badge-warning">All</span>
                         </div>
-                        <h3><span class="counter">25100</span></h3>
+                        <h3><span class="counter"><?php echo $employeeCount; ?></span></h3>
                         <div class="d-flex align-items-center justify-content-between mt-1">
                             <p class="mb-0">Total Employees</p>
-                            <span class="text-warning">35%</span>
+                            <span class="text-warning">100%</span>
                         </div>
                         <div class="iq-progress-bar bg-warning-light mt-2">
-                            <span class="bg-warning iq-progress progress-1" data-percent="35"></span>
+                            <span class="bg-warning iq-progress progress-1" data-percent="100"></span>
                         </div>
                     </div>
                 </div>
@@ -60,13 +80,13 @@ if ($userType != 'A') { ?>
                             <h5>Task</h5>
                             <span class="badge badge-success">All</span>
                         </div>
-                        <h3><span class="counter">33000</span></h3>
+                        <h3><span class="counter"><?php echo $taskCount; ?></span></h3>
                         <div class="d-flex align-items-center justify-content-between mt-1">
                             <p class="mb-0">Total Tasks</p>
-                            <span class="text-success">85%</span>
+                            <span class="text-success">100%</span>
                         </div>
                         <div class="iq-progress-bar bg-success-light mt-2">
-                            <span class="bg-success iq-progress progress-1" data-percent="85"></span>
+                            <span class="bg-success iq-progress progress-1" data-percent="100"></span>
                         </div>
                     </div>
                 </div>
@@ -78,13 +98,13 @@ if ($userType != 'A') { ?>
                             <h5>Activity</h5>
                             <span class="badge badge-info">All</span>
                         </div>
-                        <h3><span class="counter">2500</span></h3>
+                        <h3><span class="counter"><?php echo $activityCount; ?></span></h3>
                         <div class="d-flex align-items-center justify-content-between mt-1">
                             <p class="mb-0">Total Activities</p>
-                            <span class="text-info">55%</span>
+                            <span class="text-info">100%</span>
                         </div>
                         <div class="iq-progress-bar bg-info-light mt-2">
-                            <span class="bg-info iq-progress progress-1" data-percent="55"></span>
+                            <span class="bg-info iq-progress progress-1" data-percent="100"></span>
                         </div>
                     </div>
                 </div>
